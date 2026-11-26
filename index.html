@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SOMAFITX | Tienda de Ropa Deportiva</title>
+  <title>SOMAFITX | Catálogo Completo &amp; Colaboraciones</title>
   <style>
     :root {
       --bg-dark: #06060c;
@@ -26,6 +26,10 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: var(--bg-dark);
       color: var(--text-main);
@@ -44,6 +48,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .header-logo {
@@ -118,7 +124,7 @@
       position: relative;
       background: linear-gradient(145deg, #05050a 0%, #0a0a14 100%);
       border-bottom: 1px solid rgba(147, 51, 234, 0.2);
-      padding: 70px 5%;
+      padding: 60px 5%;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -127,7 +133,6 @@
       overflow: hidden;
     }
 
-    /* Efectos de energía de fondo */
     .hero::before, .hero::after {
       content: '';
       position: absolute;
@@ -156,9 +161,9 @@
     }
 
     .hero-logo {
-      width: 180px;
-      height: 180px;
-      margin: 0 auto 20px;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 18px;
       border-radius: 50%;
       border: 3px solid #00b4d8;
       box-shadow: 0 0 30px var(--neon-glow-blue), 0 0 15px var(--neon-glow-purple);
@@ -166,7 +171,7 @@
     }
 
     .hero h2 {
-      font-size: 2.4rem;
+      font-size: 2.3rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -177,7 +182,7 @@
     }
 
     .hero h3 {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: #00b4d8;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -189,7 +194,7 @@
       color: var(--text-muted);
       max-width: 580px;
       margin: 0 auto 20px;
-      font-size: 0.98rem;
+      font-size: 0.96rem;
     }
 
     .btn-hero {
@@ -212,7 +217,7 @@
     }
 
     .lema-bar {
-      margin-top: 24px;
+      margin-top: 22px;
       font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
@@ -227,12 +232,13 @@
 
     .seccion-titulo {
       text-align: center;
-      margin: 45px 0 25px;
+      margin: 45px 0 20px;
       font-size: 1.8rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1px;
       position: relative;
+      padding: 0 15px;
     }
 
     .seccion-titulo::after {
@@ -245,13 +251,110 @@
       border-radius: 2px;
     }
 
-    .catalogo {
-      max-width: 1140px;
+    .controles-catalogo {
+      max-width: 1180px;
+      margin: 0 auto 30px;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .buscador-box {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .buscador-box input {
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 180, 216, 0.4);
+      background: var(--bg-input);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .buscador-box input:focus {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 180, 216, 0.25);
+    }
+
+    .filtros-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-filtro {
+      background: var(--bg-card);
+      color: var(--text-muted);
+      border: 1px solid rgba(0, 180, 216, 0.3);
+      padding: 7px 15px;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-filtro:hover,
+    .btn-filtro.activo {
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 0 14px rgba(147, 51, 234, 0.45);
+    }
+
+    .contenedor-principal {
+      max-width: 1180px;
       margin: 0 auto 60px;
       padding: 0 20px;
+    }
+
+    .bloque-colaboracion {
+      margin-bottom: 50px;
+    }
+
+    .colab-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(147, 51, 234, 0.28);
+    }
+
+    .colab-header h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #ffffff, #00b4d8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .colab-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(181, 23, 158, 0.18);
+      color: #e879f9;
+      border: 1px solid rgba(181, 23, 158, 0.4);
+    }
+
+    .grid-productos {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 22px;
     }
 
     .card {
@@ -263,6 +366,7 @@
       display: flex;
       flex-direction: column;
       transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      position: relative;
     }
 
     .card:hover {
@@ -271,42 +375,72 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 180, 216, 0.25);
     }
 
+    .card-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(6, 6, 12, 0.85);
+      backdrop-filter: blur(6px);
+      color: #00b4d8;
+      border: 1px solid rgba(0, 180, 216, 0.4);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 2;
+    }
+
+    .card-code {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(6, 6, 12, 0.85);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      z-index: 2;
+    }
+
     .card img {
       width: 100%;
-      height: 280px;
+      height: 300px;
       object-fit: cover;
       background: #10101f;
       border-bottom: 1px solid rgba(147, 51, 234, 0.2);
     }
 
     .card-body {
-      padding: 18px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       flex: 1;
     }
 
-    .card-body h3 {
-      font-size: 1.1rem;
+    .card-body h4 {
+      font-size: 1rem;
       font-weight: 700;
       color: var(--text-main);
     }
 
     .precio {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: #00b4d8;
     }
 
     select {
-      padding: 9px;
+      padding: 8px;
       border-radius: 8px;
       border: 1px solid rgba(147, 51, 234, 0.4);
       background: var(--bg-input);
       color: var(--text-main);
       width: 100%;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       outline: none;
     }
 
@@ -318,10 +452,10 @@
       background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
       color: #fff;
       border: none;
-      padding: 12px;
+      padding: 11px;
       border-radius: 8px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       cursor: pointer;
       margin-top: auto;
       box-shadow: 0 4px 14px rgba(147, 51, 234, 0.35);
@@ -340,22 +474,28 @@
       border-top: 1px solid rgba(147, 51, 234, 0.15);
       background: #040408;
     }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hero h2 {
+        font-size: 1.9rem;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>
     <div class="header-logo">
-      <!-- Cambia 'logo.jpg' por el nombre de tu archivo del logo en GitHub -->
-      <img src="logo.jpg" alt="SOMAFITX Logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=100&q=80'">
+      <img src="img/logo.jpg" alt="SOMAFITX Logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=100&q=80'">
       <h1>SOMAFITX</h1>
     </div>
     <nav class="nav-links">
       <a href="#">Inicio</a>
-      <a href="#catalogo">Colección</a>
-      <a href="#">Hombre</a>
-      <a href="#">Mujer</a>
-      <a href="#">Accesorios</a>
+      <a href="#catalogo">Catálogo Completo</a>
+      <a href="#colaboraciones">Colaboraciones</a>
     </nav>
     <div class="header-actions">
       <span class="badge-envio">Envíos a todo México</span>
@@ -365,21 +505,32 @@
 
   <section class="hero">
     <div class="hero-content">
-      <!-- Cambia 'logo.jpg' por el nombre de tu archivo del logo en GitHub -->
-      <img src="logo.jpg" alt="SOMAFITX Logo" class="hero-logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=200&q=80'">
+      <img src="img/logo.jpg" alt="SOMAFITX Logo" class="hero-logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=200&q=80'">
       <h2>SOMAFITX</h2>
-      <h3>Ropa Deportiva &amp; Suplementos</h3>
-      <p>Prendas diseñadas para entrenar al máximo y vestir con estilo todos los días. Elige tu prenda y pide directo por WhatsApp.</p>
-      <a href="#catalogo" class="btn-hero">Ver Catálogo</a>
+      <h3>Ropa Deportiva &amp; Colaboraciones Exclusivas</h3>
+      <p>Catálogo completo de 315 piezas exclusivas. Filtra por colección o busca tu número de prenda y pide directo por WhatsApp.</p>
+      <a href="#catalogo" class="btn-hero">Explorar 315 Prendas</a>
       <div class="lema-bar">
         FUERZA <span>•</span> DISCIPLINA <span>•</span> RESULTADOS
       </div>
     </div>
   </section>
 
-  <h2 class="seccion-titulo" id="catalogo">Catálogo de Ropa Deportiva</h2>
+  <h2 class="seccion-titulo" id="catalogo">Catálogo por Colección</h2>
 
-  <main class="catalogo"></main>
+  <div class="controles-catalogo">
+    <div class="buscador-box">
+      <input
+        type="text"
+        id="buscador"
+        placeholder="Buscar por colección, nombre o archivo (ej. prenda-173, Spider-Man)..."
+        oninput="actualizarVista()"
+      />
+    </div>
+    <div class="filtros-bar" id="filtros-bar"></div>
+  </div>
+
+  <main class="contenedor-principal" id="colaboraciones"></main>
 
   <footer>
     &copy; 2026 SOMAFITX Store &mdash; Todos los derechos reservados.
@@ -389,62 +540,232 @@
     // 1. Cambia este número por tu WhatsApp (código de país + número sin espacios)
     const TELEFONO_WHATSAPP = "525500000000";
 
-    // 2. Catálogo de productos
-    const productos = [
-      {
-        nombre: "Playera Oversize SomafitX",
-        precio: "$450 MXN",
-        imagen: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80",
-        tallas: ["S", "M", "L", "XL"]
-      },
-      {
-        nombre: "Sudadera Hoodie SomafitX",
-        precio: "$890 MXN",
-        imagen: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&q=80",
-        tallas: ["S", "M", "L", "XL"]
-      },
-      {
-        nombre: "Jogger Deportivo Fit",
-        precio: "$680 MXN",
-        imagen: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&q=80",
-        tallas: ["28", "30", "32", "34"]
-      },
-      {
-        nombre: "Playera de Compresión Pro",
-        precio: "$490 MXN",
-        imagen: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600&q=80",
-        tallas: ["S", "M", "L", "XL"]
-      }
+    // 2. Ruta de la carpeta de imágenes
+    const RUTA_IMG = "img/";
+
+    // 3. Lista exacta de las 315 imágenes
+    const ARCHIVOS_IMAGENES = [
+      "prenda-001.jpg", "prenda-002.jpg", "prenda-003.jpg", "prenda-004.jpg", "prenda-005.jpg",
+      "prenda-006.jpg", "prenda-007.jpg", "prenda-008.jpg", "prenda-009.jpg", "prenda-010.jpg",
+      "prenda-011.jpg", "prenda-012.jpg", "prenda-013.jpg", "prenda-014.jpg", "prenda-015.jpg",
+      "prenda-016.jpg", "prenda-017.jpg", "prenda-018.jpg", "prenda-019.jpg", "prenda-020.jpg",
+      "prenda-021.jpg", "prenda-022.jpg", "prenda-023.jpg", "prenda-024.jpg", "prenda-025.jpg",
+      "prenda-026.jpg", "prenda-027.jpg", "prenda-028.jpg", "prenda-029.jpg", "prenda-030.jpg",
+      "prenda-031.jpg", "prenda-032.jpg", "prenda-033.jpg", "prenda-034.jpg", "prenda-035.jpg",
+      "prenda-036.jpg", "prenda-037.jpg", "prenda-038.jpg", "prenda-039.jpg", "prenda-040.jpg",
+      "prenda-041.jpg", "prenda-042.jpg", "prenda-043.jpg", "prenda-044.jpg", "prenda-045.jpg",
+      "prenda-046.jpg", "prenda-047.jpg", "prenda-048.jpg", "prenda-049.jpg", "prenda-050.jpg",
+      "prenda-051.jpg", "prenda-052.jpg", "prenda-053.jpg", "prenda-054.jpg", "prenda-055.jpg",
+      "prenda-056.jpg", "prenda-057.jpg", "prenda-058.jpg", "prenda-059.jpg", "prenda-060.jpg",
+      "prenda-061.jpg", "prenda-062.jpg", "prenda-063.jpg", "prenda-064.jpg", "prenda-065.jpg",
+      "prenda-066.jpg", "prenda-067.jpg", "prenda-068.jpg", "prenda-069.jpg", "prenda-070.jpg",
+      "prenda-071.jpg", "prenda-072.jpg", "prenda-073.jpg", "prenda-074.jpg", "prenda-075.jpg",
+      "prenda-076.jpg", "prenda-077.jpg", "prenda-078.jpg", "prenda-079.jpg", "prenda-080.jpg",
+      "prenda-081.jpg", "prenda-082.jpg", "prenda-083.jpg", "prenda-084.jpg", "prenda-085.jpg",
+      "prenda-086.jpg", "prenda-087.jpg", "prenda-088.jpg", "prenda-089.jpg", "prenda-090.jpg",
+      "prenda-091.jpg", "prenda-092.jpg", "prenda-093.jpg", "prenda-094.jpg", "prenda-095.jpg",
+      "prenda-096.jpg", "prenda-097.jpg", "prenda-098.jpg", "prenda-099.jpg", "prenda-100.jpg",
+      "prenda-101.jpg", "prenda-102.jpg", "prenda-103.jpg", "prenda-104.jpg", "prenda-105.jpg",
+      "prenda-106.jpg", "prenda-107.jpg", "prenda-108.jpg", "prenda-109.jpg", "prenda-110.jpg",
+      "prenda-111.jpg", "prenda-112.jpg", "prenda-113.jpg", "prenda-114.jpg", "prenda-115.jpg",
+      "prenda-116.jpg", "prenda-117.jpg", "prenda-118.jpg", "prenda-119.jpg", "prenda-120.jpg",
+      "prenda-121.jpg", "prenda-122.jpg", "prenda-123.jpg", "prenda-124.jpg", "prenda-125.jpg",
+      "prenda-126.jpg", "prenda-127.jpg", "prenda-128.jpg", "prenda-129.jpg", "prenda-130.jpg",
+      "prenda-131.jpg", "prenda-132.jpg", "prenda-133.jpg", "prenda-134.jpg", "prenda-135.jpg",
+      "prenda-136.jpg", "prenda-137.jpg", "prenda-138.jpg", "prenda-139.jpg", "prenda-140.jpg",
+      "prenda-141.jpg", "prenda-142.jpg", "prenda-143.jpg", "prenda-144.jpg", "prenda-145.jpg",
+      "prenda-146.jpg", "prenda-147.jpg", "prenda-148.jpg", "prenda-149.jpg", "prenda-150.jpg",
+      "prenda-151.jpg", "prenda-152.jpg", "prenda-153.jpg", "prenda-154.jpg", "prenda-155.jpg",
+      "prenda-156.jpg", "prenda-157.jpg", "prenda-158.jpg", "prenda-159.jpg", "prenda-160.jpg",
+      "prenda-161.jpg", "prenda-162.jpg", "prenda-163.jpg", "prenda-164.jpg", "prenda-165.jpg",
+      "prenda-166.jpg", "prenda-167.jpg", "prenda-168.jpg", "prenda-169.jpg", "prenda-170.jpg",
+      "prenda-171.jpg", "prenda-172.jpg", "prenda-173.jpg", "prenda-174.jpg", "prenda-175.jpg",
+      "prenda-176.jpg", "prenda-177.jpg", "prenda-178.jpg", "prenda-179.jpg", "prenda-180.jpg",
+      "prenda-181.jpg", "prenda-182.jpg", "prenda-183.jpg", "prenda-184.jpg", "prenda-185.jpg",
+      "prenda-186.jpg", "prenda-187.jpg", "prenda-188.jpg", "prenda-189.jpg", "prenda-190.jpg",
+      "prenda-191.jpg", "prenda-192.jpg", "prenda-193.jpg", "prenda-194.jpg", "prenda-195.jpg",
+      "prenda-196.jpg", "prenda-197.jpg", "prenda-198.jpg", "prenda-199.jpg", "prenda-200.jpg",
+      "prenda-201.jpg", "prenda-202.jpg", "prenda-203.jpg", "prenda-204.jpg", "prenda-205.jpg",
+      "prenda-206.jpg", "prenda-207.jpg", "prenda-208.jpg", "prenda-209.jpg", "prenda-210.jpg",
+      "prenda-211.jpg", "prenda-212.jpg", "prenda-213.jpg", "prenda-214.jpg", "prenda-215.jpg",
+      "prenda-216.jpg", "prenda-217.jpg", "prenda-218.jpg", "prenda-219.jpg", "prenda-220.jpg",
+      "prenda-221.jpg", "prenda-222.jpg", "prenda-223.jpg", "prenda-224.jpg", "prenda-225.jpg",
+      "prenda-226.jpg", "prenda-227.jpg", "prenda-228.jpg", "prenda-229.jpg", "prenda-230.jpg",
+      "prenda-231.jpg", "prenda-232.jpg", "prenda-233.jpg", "prenda-234.jpg", "prenda-235.jpg",
+      "prenda-236.jpg", "prenda-237.jpg", "prenda-238.jpg", "prenda-239.jpg", "prenda-240.jpg",
+      "prenda-241.jpg", "prenda-242.jpg", "prenda-243.jpg", "prenda-244.jpg", "prenda-245.jpg",
+      "prenda-246.jpg", "prenda-247.jpg", "prenda-248.jpg", "prenda-249.jpg", "prenda-250.jpg",
+      "prenda-251.jpg", "prenda-252.jpg", "prenda-253.jpg", "prenda-254.jpg", "prenda-255.jpg",
+      "prenda-256.jpg", "prenda-257.jpg", "prenda-258.jpg", "prenda-259.jpg", "prenda-260.jpg",
+      "prenda-261.jpg", "prenda-262.jpg", "prenda-263.jpg", "prenda-264.jpg", "prenda-265.jpg",
+      "prenda-266.jpg", "prenda-267.jpg", "prenda-268.jpg", "prenda-269.jpg", "prenda-270.jpg",
+      "prenda-271.jpg", "prenda-272.jpg", "prenda-273.jpg", "prenda-274.jpg", "prenda-275.jpg",
+      "prenda-276.jpg", "prenda-277.jpg", "prenda-278.jpg", "prenda-279.jpg", "prenda-280.jpg",
+      "prenda-281.jpg", "prenda-282.jpg", "prenda-283.jpg", "prenda-284.jpg", "prenda-285.jpg",
+      "prenda-286.jpg", "prenda-287.jpg", "prenda-288.jpg", "prenda-289.jpg", "prenda-290.jpg",
+      "prenda-291.jpg", "prenda-292.jpg", "prenda-293.jpg", "prenda-294.jpg", "prenda-295.jpg",
+      "prenda-296.jpg", "prenda-297.jpg", "prenda-298.jpg", "prenda-299.jpg", "prenda-300.jpg",
+      "prenda-301.jpg", "prenda-302.jpg", "prenda-303.jpg", "prenda-304.jpg", "prenda-305.jpg",
+      "prenda-306.jpg", "prenda-307.jpg", "prenda-308.jpg", "prenda-309.jpg", "prenda-310.jpg",
+      "prenda-311.jpg", "prenda-312.jpg", "prenda-313.jpg", "prenda-314.jpg", "prenda-315.jpg"
     ];
 
-    const contenedor = document.querySelector(".catalogo");
+    // 4. Datos detallados de prendas clasificadas por colección
+    const CATALOGO_CLASIFICADO = {
+      "prenda-014.jpg": { coleccion: "IT Chapter Two", nombre: "IT Chapter Two (Pennywise)", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-043.jpg": { coleccion: "Disney - The Nightmare Before Christmas", nombre: "Tim Burton's The Nightmare Before Christmas", precio: "$1,599 MXN", tallas: ["S", "M"] },
+      "prenda-073.jpg": { coleccion: "Misfits", nombre: "Misfits (Static Age)", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-114.jpg": { coleccion: "The Lost Boys", nombre: "The Lost Boys / Vampire", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-134.jpg": { coleccion: "Chainsaw Man", nombre: "Chainsaw Man", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-136.jpg": { coleccion: "The Mummy", nombre: "The Mummy (Amon Ra)", precio: "$1,599 MXN", tallas: ["L"] },
+      "prenda-144.jpg": { coleccion: "Chainsaw Man", nombre: "Chainsaw Man", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-156.jpg": { coleccion: "Disney - The Nightmare Before Christmas", nombre: "Tim Burton's The Nightmare Before Christmas (Jack Skellington)", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-173.jpg": { coleccion: "Chainsaw Man", nombre: "Chainsaw Man", precio: "$1,599 MXN", tallas: ["L"] },
+      "prenda-177.jpg": { coleccion: "IT Chapter Two", nombre: "IT Chapter Two", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-191.jpg": { coleccion: "Spider-Man / Marvel", nombre: "Spider-Man Protector of NYC", precio: "$3,899 MXN", tallas: ["M"] },
+      "prenda-213.jpg": { coleccion: "Disney - Mickey Mouse", nombre: "Disney Mickey Mouse", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-237.jpg": { coleccion: "Street Fighter", nombre: "Street Fighter Champion Edition", precio: "$1,799 MXN", tallas: ["M"] }
+    };
 
-    productos.forEach((prod, index) => {
-      const opcionesTalla = prod.tallas
-        .map((t) => `<option value="${t}">Talla ${t}</option>`)
-        .join("");
+    // Orden de visualización de las colecciones
+    const ORDEN_COLECCIONES = [
+      "Chainsaw Man",
+      "Disney - Mickey Mouse",
+      "Disney - The Nightmare Before Christmas",
+      "IT Chapter Two",
+      "Misfits",
+      "Spider-Man / Marvel",
+      "Street Fighter",
+      "The Lost Boys",
+      "The Mummy",
+      "Colección General"
+    ];
 
-      contenedor.innerHTML += `
-        <article class="card">
-          <img src="${prod.imagen}" alt="${prod.nombre}">
-          <div class="card-body">
-            <h3>${prod.nombre}</h3>
-            <p class="precio">${prod.precio}</p>
-            <select id="talla-${index}">${opcionesTalla}</select>
-            <button class="btn-compra" onclick="comprar(${index})">🛒 Comprar por WhatsApp</button>
-          </div>
-        </article>
-      `;
+    // Construir catálogo completo cruzando los 315 archivos con los datos clasificados
+    const todasLasPrendas = ARCHIVOS_IMAGENES.map((archivo, index) => {
+      const numeroStr = archivo.replace("prenda-", "").replace(".jpg", "");
+      const info = CATALOGO_CLASIFICADO[archivo];
+
+      return {
+        id: index + 1,
+        codigo: `#${numeroStr}`,
+        archivo: archivo,
+        coleccion: info ? info.coleccion : "Colección General",
+        nombre: info ? info.nombre : `Prenda Edición Especial #${numeroStr}`,
+        precio: info ? info.precio : "Consultar precio",
+        tallas: info ? info.tallas : ["S", "M", "L", "XL"]
+      };
     });
 
-    function comprar(index) {
-      const prod = productos[index];
-      const talla = document.getElementById(`talla-${index}`).value;
+    let coleccionActiva = "Todas";
+
+    const contenedor = document.getElementById("colaboraciones");
+    const filtrosBar = document.getElementById("filtros-bar");
+    const buscadorInput = document.getElementById("buscador");
+
+    function renderFiltros() {
+      const conteoPorColab = {};
+      todasLasPrendas.forEach((p) => {
+        conteoPorColab[p.coleccion] = (conteoPorColab[p.coleccion] || 0) + 1;
+      });
+
+      let html = `<button class="btn-filtro ${coleccionActiva === "Todas" ? "activo" : ""}" onclick="seleccionarFiltro('Todas')">Todas (${todasLasPrendas.length})</button>`;
+
+      ORDEN_COLECCIONES.forEach((col) => {
+        if (conteoPorColab[col]) {
+          const activo = coleccionActiva === col ? "activo" : "";
+          html += `<button class="btn-filtro ${activo}" onclick="seleccionarFiltro('${col.replace(/'/g, "\\'")}')">${col} (${conteoPorColab[col]})</button>`;
+        }
+      });
+
+      filtrosBar.innerHTML = html;
+    }
+
+    function seleccionarFiltro(col) {
+      coleccionActiva = col;
+      renderFiltros();
+      actualizarVista();
+    }
+
+    function actualizarVista() {
+      const textoBusqueda = buscadorInput.value.trim().toLowerCase();
+      contenedor.innerHTML = "";
+
+      ORDEN_COLECCIONES.forEach((nombreCol) => {
+        if (coleccionActiva !== "Todas" && coleccionActiva !== nombreCol) return;
+
+        const filtradas = todasLasPrendas.filter((p) => {
+          if (p.coleccion !== nombreCol) return false;
+          if (!textoBusqueda) return true;
+          return (
+            p.nombre.toLowerCase().includes(textoBusqueda) ||
+            p.coleccion.toLowerCase().includes(textoBusqueda) ||
+            p.archivo.toLowerCase().includes(textoBusqueda) ||
+            p.codigo.toLowerCase().includes(textoBusqueda)
+          );
+        });
+
+        if (filtradas.length === 0) return;
+
+        const cardsHTML = filtradas
+          .map((prod) => {
+            const opcionesTalla = prod.tallas
+              .map((t) => `<option value="${t}">Talla ${t}</option>`)
+              .join("");
+
+            return `
+              <article class="card">
+                <span class="card-tag">${prod.coleccion}</span>
+                <span class="card-code">${prod.codigo}</span>
+                <img 
+                  src="${RUTA_IMG}${prod.archivo}" 
+                  alt="${prod.nombre}"
+                  loading="lazy"
+                  onerror="this.src='https://placehold.co/600x700/0c0c16/00b4d8?text=${encodeURIComponent(prod.archivo)}'"
+                >
+                <div class="card-body">
+                  <h4>${prod.nombre}</h4>
+                  <p class="precio">${prod.precio}</p>
+                  <select id="talla-${prod.id}">${opcionesTalla}</select>
+                  <button class="btn-compra" onclick="comprar(${prod.id})">
+                    🛒 Pedir por WhatsApp
+                  </button>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+
+        contenedor.innerHTML += `
+          <section class="bloque-colaboracion">
+            <div class="colab-header">
+              <h3>${nombreCol}</h3>
+              <span class="colab-badge">${filtradas.length} ${filtradas.length === 1 ? "pieza" : "piezas"}</span>
+            </div>
+            <div class="grid-productos">
+              ${cardsHTML}
+            </div>
+          </section>
+        `;
+      });
+
+      if (contenedor.innerHTML === "") {
+        contenedor.innerHTML = `<p style="text-align:center; color: var(--text-muted); padding: 40px 0;">No se encontraron prendas con ese criterio de búsqueda.</p>`;
+      }
+    }
+
+    function comprar(id) {
+      const prod = todasLasPrendas.find((p) => p.id === id);
+      const talla = document.getElementById(`talla-${id}`).value;
       const mensaje = encodeURIComponent(
-        `Hola, me interesa comprar: ${prod.nombre} (${prod.precio}) en talla ${talla}.`
+        `Hola SOMAFITX, me interesa la prenda ${prod.archivo} (${prod.nombre}) de la colección ${prod.coleccion} en talla ${talla} (${prod.precio}).`
       );
       window.open(`https://wa.me/${TELEFONO_WHATSAPP}?text=${mensaje}`, "_blank");
     }
+
+    // Inicializar
+    renderFiltros();
+    actualizarVista();
   </script>
 
 </body>
