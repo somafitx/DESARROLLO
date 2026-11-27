@@ -289,7 +289,7 @@
       text-shadow: 0 0 8px rgba(0, 168, 255, 0.8);
     }
 
-    /* === BARRA SUB-MENÚ DE PRENDAS (PLAYERAS, PANTS, SUDADERAS, GORRAS) === */
+    /* === BARRA SUB-MENÚ DE PRENDAS (PLAYERAS, PANTS Y SHORT, SUDADERAS, GORRAS Y CALETAS) === */
     .menu-tipos-prenda {
       display: flex;
       justify-content: center;
@@ -1440,8 +1440,8 @@
     const ORDEN_TIPOS_PRENDA = [
       "Playeras",
       "Sudaderas",
-      "Pants",
-      "Gorras",
+      "Pants y Short",
+      "Gorras y Caletas",
       "Chamarras",
       "Box Sets"
     ];
@@ -1461,18 +1461,70 @@
     const PORTADAS_TIPO_PRENDA = {
       "Playeras": "prenda-171.jpg",
       "Sudaderas": "prenda-183.jpg",
-      "Pants": "prenda-188.jpg",
-      "Gorras": "prenda-089.jpg",
+      "Pants y Short": "prenda-188.jpg",
+      "Gorras y Caletas": "prenda-089.jpg",
       "Chamarras": "prenda-163.jpg",
       "Box Sets": "prenda-181.jpg"
     };
 
-    // Clasificación automática precisa por tipo de prenda
+    const CATEGORIA_OVERRIDES = {
+      1: "Sudaderas",
+      2: "Sudaderas",
+      6: "Sudaderas",
+      8: "Gorras y Caletas",
+      15: "Sudaderas",
+      16: "Pants y Short",
+      21: "Sudaderas",
+      26: "Pants y Short",
+      35: "Pants y Short",
+      40: "Sudaderas",
+      45: "Sudaderas",
+      55: "Sudaderas",
+      63: "Pants y Short",
+      64: "Sudaderas",
+      68: "Pants y Short",
+      69: "Sudaderas",
+      71: "Sudaderas",
+      76: "Sudaderas",
+      92: "Sudaderas",
+      93: "Pants y Short",
+      94: "Sudaderas",
+      101: "Sudaderas",
+      104: "Sudaderas",
+      108: "Sudaderas",
+      113: "Sudaderas",
+      115: "Chamarras",
+      123: "Pants y Short",
+      131: "Sudaderas",
+      140: "Pants y Short",
+      146: "Sudaderas",
+      155: "Sudaderas",
+      157: "Chamarras",
+      162: "Pants y Short",
+      164: "Sudaderas",
+      174: "Playeras",
+      198: "Playeras",
+      240: "Sudaderas",
+      260: "Sudaderas",
+      288: "Pants y Short",
+      300: "Sudaderas",
+      302: "Sudaderas",
+      303: "Pants y Short",
+      304: "Sudaderas",
+      305: "Pants y Short",
+      314: "Sudaderas"
+    };
+
+    // Clasificación automática precisa por tipo de prenda (con ajustes manuales)
     function detectarTipoPrenda(item) {
+      const numId = Math.floor(Number(item.id));
+      if (CATEGORIA_OVERRIDES[numId]) {
+        return CATEGORIA_OVERRIDES[numId];
+      }
       const n = item.nombre.toLowerCase();
       if (n.includes("box set")) return "Box Sets";
-      if (n.includes("beanie") || n.includes("gorra") || n.includes("cap")) return "Gorras";
-      if (n.includes("pants") || n.includes("jogger") || n.includes("shorts")) return "Pants";
+      if (n.includes("beanie") || n.includes("gorra") || n.includes("cap")) return "Gorras y Caletas";
+      if (n.includes("pants") || n.includes("jogger") || n.includes("shorts")) return "Pants y Short";
       if (n.includes("jacket")) return "Chamarras";
       if (n.includes("hoodie")) return "Sudaderas";
       return "Playeras";
