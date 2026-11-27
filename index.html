@@ -81,22 +81,88 @@
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 20px;
+      align-items: center;
     }
 
-    .nav-links a {
+    .nav-links > a, .nav-dropdown-btn {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       transition: color 0.2s;
       cursor: pointer;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
-    .nav-links a:hover {
+    .nav-links > a:hover, .nav-dropdown-btn:hover {
       color: var(--neon-cyan);
+    }
+
+    /* Dropdown de Prendas en Header */
+    .nav-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 10px;
+      background: rgba(11, 11, 22, 0.98);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 168, 255, 0.4);
+      border-radius: 6px;
+      min-width: 190px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 15px rgba(139, 44, 245, 0.25);
+      z-index: 200;
+      padding: 6px 0;
+    }
+
+    .nav-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 0;
+      right: 0;
+      height: 12px;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu {
+      display: block;
+    }
+
+    .nav-dropdown-menu a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-dropdown-menu a:hover {
+      background: linear-gradient(90deg, rgba(0, 102, 255, 0.25), rgba(139, 44, 245, 0.25));
+      color: var(--neon-cyan);
+    }
+
+    .nav-dropdown-menu a span {
+      font-size: 0.72rem;
+      color: var(--text-muted);
     }
 
     .header-actions {
@@ -223,6 +289,58 @@
       text-shadow: 0 0 8px rgba(0, 168, 255, 0.8);
     }
 
+    /* === BARRA SUB-MENÚ DE PRENDAS (PLAYERAS, PANTS, SUDADERAS, GORRAS) === */
+    .menu-tipos-prenda {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 26px auto 10px;
+      padding: 12px 16px;
+      background: rgba(11, 11, 22, 0.85);
+      border: 1px solid rgba(139, 44, 245, 0.25);
+      border-radius: 8px;
+      max-width: 960px;
+    }
+
+    .btn-tipo-prenda {
+      background: var(--bg-input);
+      color: var(--steel-silver);
+      border: 1px solid rgba(0, 168, 255, 0.25);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-tipo-prenda:hover {
+      border-color: var(--neon-cyan);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn-tipo-prenda.activo {
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+      border-color: transparent;
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(139, 44, 245, 0.5);
+    }
+
+    .btn-tipo-prenda .count-tag {
+      font-size: 0.7rem;
+      opacity: 0.85;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 1px 7px;
+      border-radius: 999px;
+    }
+
     /* === CONTENEDOR PRINCIPAL === */
     .contenedor-principal {
       max-width: 1340px;
@@ -232,8 +350,8 @@
 
     /* === BUSCADOR MINIMALISTA === */
     .buscador-wrap {
-      max-width: 520px;
-      margin: 38px auto 15px;
+      max-width: 540px;
+      margin: 26px auto 15px;
       position: relative;
     }
 
@@ -260,7 +378,7 @@
        ===================================================================== */
 
     .pc-bloque {
-      margin-top: 56px;
+      margin-top: 52px;
     }
 
     .pc-bloque-header {
@@ -277,25 +395,25 @@
       margin-bottom: 14px;
     }
 
-    /* Pestañas editoriales subrayadas (como BEST-SELLERS / COLECCIÓN) */
+    /* Pestañas editoriales subrayadas */
     .pc-tabs {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 26px;
+      gap: 22px;
       border-bottom: 1px solid rgba(139, 44, 245, 0.2);
       padding-bottom: 12px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .pc-tab {
       background: none;
       border: none;
       color: var(--text-muted);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 2.2px;
+      letter-spacing: 2px;
       cursor: pointer;
       padding: 4px 2px;
       position: relative;
@@ -319,6 +437,41 @@
       height: 2px;
       background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
       box-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    /* Sub-filtros por tipo de prenda dentro de la vista de colección */
+    .pc-subfiltros-prenda {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .pc-subpill {
+      background: rgba(17, 17, 34, 0.9);
+      border: 1px solid rgba(139, 44, 245, 0.35);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pc-subpill:hover {
+      color: #ffffff;
+      border-color: var(--neon-cyan);
+    }
+
+    .pc-subpill.activo {
+      background: rgba(0, 168, 255, 0.18);
+      border-color: var(--neon-cyan);
+      color: var(--neon-cyan);
+      box-shadow: 0 0 10px rgba(0, 168, 255, 0.25);
     }
 
     /* Carrusel horizontal estilo boutique con flechas laterales */
@@ -374,7 +527,7 @@
     .pc-arrow.prev { left: -16px; }
     .pc-arrow.next { right: -16px; }
 
-    /* === TARJETA EDITORIAL DE PRODUCTO (LIMPIA, VERTICAL, CON BOTÓN "ELIGE OPCIONES" AL HOVER) === */
+    /* === TARJETA EDITORIAL DE PRODUCTO === */
     .pc-product-card {
       scroll-snap-align: start;
       display: flex;
@@ -413,7 +566,6 @@
       transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    /* Zoom suave al pasar el cursor por encima */
     .pc-product-card:hover .pc-img-stage img {
       transform: scale(1.09);
     }
@@ -422,16 +574,31 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      background: rgba(5, 5, 11, 0.8);
+      background: rgba(5, 5, 11, 0.82);
       color: var(--text-muted);
       font-size: 0.68rem;
       letter-spacing: 1px;
       padding: 3px 8px;
       border-radius: 3px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    /* Botón flotante "ELIGE OPCIONES" estilo Pineda Covalin */
+    .pc-type-pill {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(11, 11, 22, 0.86);
+      color: var(--neon-cyan);
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 3px;
+      border: 1px solid rgba(0, 168, 255, 0.35);
+    }
+
+    /* Botón flotante "ELIGE OPCIONES" */
     .pc-quick-btn {
       position: absolute;
       left: 12px;
@@ -490,7 +657,7 @@
       letter-spacing: 0.8px;
     }
 
-    /* Botón centrado inferior "VER COLECCIÓN" estilo boutique */
+    /* Botón centrado inferior "VER COLECCIÓN" */
     .pc-cta-center {
       text-align: center;
       margin-top: 26px;
@@ -517,7 +684,7 @@
       box-shadow: 0 0 20px rgba(139, 44, 245, 0.45);
     }
 
-    /* === SECCIÓN "COMPRA POR CATEGORÍA" (TARJETAS VERTICALES EDITORIALES) === */
+    /* === SECCIÓN "COMPRA POR TIPO DE PRENDA" Y "COMPRA POR COLECCIÓN" === */
     .pc-cat-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -596,9 +763,9 @@
       align-items: center;
       gap: 16px;
       padding: 20px 0;
-      margin-top: 24px;
+      margin-top: 18px;
       border-bottom: 1px solid rgba(139, 44, 245, 0.25);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .btn-regresar {
@@ -644,7 +811,7 @@
       gap: 28px 22px;
     }
 
-    /* === MODAL / VISTA RÁPIDA GRANDE (CASI MITAD DE PANTALLA) === */
+    /* === MODAL / VISTA RÁPIDA GRANDE === */
     .modal-visor {
       position: fixed;
       inset: 0;
@@ -866,8 +1033,12 @@
     </div>
     <nav class="nav-links">
       <a onclick="volverPortadaEditorial()">Inicio</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn" onclick="abrirFiltroTipoPrenda('Todos')">Prendas &#9662;</button>
+        <div class="nav-dropdown-menu" id="header-menu-prendas"></div>
+      </div>
       <a href="#seccion-categorias" onclick="volverPortadaEditorial()">Colecciones</a>
-      <a onclick="abrirColeccionCompleta('Todas')">Catálogo (316)</a>
+      <a onclick="abrirColeccionCompleta('Todas', 'Todos')">Catálogo (316)</a>
     </nav>
     <div class="header-actions">
       <span class="badge-envio">Envíos a todo México</span>
@@ -887,17 +1058,20 @@
   </section>
 
   <main class="contenedor-principal">
+    <!-- Menú rápido por Tipo de Prenda -->
+    <nav class="menu-tipos-prenda" id="barra-tipos-prenda" aria-label="Filtrar por tipo de prenda"></nav>
+
     <!-- Buscador rápido -->
     <div class="buscador-wrap">
       <input
         type="text"
         id="buscador"
-        placeholder="Buscar pieza, colección o código (ej. Spider-Man, #173)..."
+        placeholder="Buscar pieza, colección, prenda o código (ej. Spider-Man, Hoodie, #173)..."
         oninput="manejarBusqueda()"
       />
     </div>
 
-    <!-- Zona dinámica: Portada Editorial tipo Pineda Covalin o Vista de Colección -->
+    <!-- Zona dinámica: Portada Editorial tipo Pineda Covalin o Vista de Colección/Prenda -->
     <div id="zona-dinamica"></div>
   </main>
 
@@ -909,7 +1083,7 @@
         <img id="modal-img" src="" alt="Vista ampliada">
       </div>
       <div class="modal-info">
-        <div class="modal-meta"><span id="modal-col">COLECCIÓN</span> &bull; <span id="modal-code">#000</span></div>
+        <div class="modal-meta"><span id="modal-col">COLECCIÓN</span> &bull; <span id="modal-tipo">PRENDA</span> &bull; <span id="modal-code">#000</span></div>
         <h3 id="modal-nombre">Nombre de la prenda</h3>
         <p class="modal-precio" id="modal-precio">$1,599 MXN</p>
         <p class="modal-desc">Edición especial disponible para envío a todo México. Selecciona tu talla para ordenar directamente por WhatsApp.</p>
@@ -1251,7 +1425,6 @@
       { id: 315, imagen: "prenda-315.jpg", nombre: "Pants Civil Regime Blue Spiders", coleccion: "Civil Regime", talla: "M", precio: 1799 }
     ];
 
-
     const ORDEN_COLECCIONES = [
       "Marvel",
       "DC Comics",
@@ -1262,6 +1435,15 @@
       "Caricaturas",
       "Civil Regime",
       "Otros"
+    ];
+
+    const ORDEN_TIPOS_PRENDA = [
+      "Playeras",
+      "Sudaderas",
+      "Pants",
+      "Gorras",
+      "Chamarras",
+      "Box Sets"
     ];
 
     const PORTADAS_CATEGORIA = {
@@ -1275,6 +1457,26 @@
       "Civil Regime": "prenda-001.jpg",
       "Otros": "prenda-290.jpg"
     };
+
+    const PORTADAS_TIPO_PRENDA = {
+      "Playeras": "prenda-171.jpg",
+      "Sudaderas": "prenda-183.jpg",
+      "Pants": "prenda-188.jpg",
+      "Gorras": "prenda-089.jpg",
+      "Chamarras": "prenda-163.jpg",
+      "Box Sets": "prenda-181.jpg"
+    };
+
+    // Clasificación automática precisa por tipo de prenda
+    function detectarTipoPrenda(item) {
+      const n = item.nombre.toLowerCase();
+      if (n.includes("box set")) return "Box Sets";
+      if (n.includes("beanie") || n.includes("gorra") || n.includes("cap")) return "Gorras";
+      if (n.includes("pants") || n.includes("jogger") || n.includes("shorts")) return "Pants";
+      if (n.includes("jacket")) return "Chamarras";
+      if (n.includes("hoodie")) return "Sudaderas";
+      return "Playeras";
+    }
 
     function parsearTallas(tallaStr) {
       if (!tallaStr) return ["M"];
@@ -1296,11 +1498,13 @@
       const numeroStr = item.imagen.replace("prenda-", "").replace(".jpg", "");
       const codigoExtra = String(item.id).includes(".") ? `#${numeroStr}-B` : `#${numeroStr}`;
       const tallasArr = parsearTallas(item.talla);
+      const tipoPrenda = detectarTipoPrenda(item);
       return {
         id: String(item.id),
         codigo: codigoExtra,
         archivo: item.imagen,
         coleccion: item.coleccion,
+        tipoPrenda: tipoPrenda,
         nombre: item.nombre,
         precio: formatearPrecio(item.precio),
         tallas: tallasArr,
@@ -1311,6 +1515,7 @@
     // Estado de la página
     let vistaActual = "portada"; // "portada" o "coleccion"
     let coleccionActiva = "Todas";
+    let tipoPrendaActivo = "Todos";
     let tabDestacadosActiva = "Marvel";
     let tabUniversoActiva = "Terror";
     let tallaSeleccionadaModal = "";
@@ -1318,17 +1523,88 @@
     const zonaDinamica = document.getElementById("zona-dinamica");
     const buscadorInput = document.getElementById("buscador");
 
+    // Construir menús de tipos de prenda (Header dropdown + Barra rápida)
+    function renderizarMenusPrendas() {
+      const conteoTipos = { Todos: todasLasPrendas.length };
+      todasLasPrendas.forEach((p) => {
+        conteoTipos[p.tipoPrenda] = (conteoTipos[p.tipoPrenda] || 0) + 1;
+      });
+
+      const headerMenu = document.getElementById("header-menu-prendas");
+      const barraTipos = document.getElementById("barra-tipos-prenda");
+
+      const opciones = ["Todos", ...ORDEN_TIPOS_PRENDA];
+
+      if (headerMenu) {
+        headerMenu.innerHTML = opciones
+          .map(
+            (tipo) => `
+              <a onclick="abrirFiltroTipoPrenda('${tipo}')">
+                ${tipo === "Todos" ? "Todo el catálogo" : tipo}
+                <span>(${conteoTipos[tipo] || 0})</span>
+              </a>
+            `
+          )
+          .join("");
+      }
+
+      if (barraTipos) {
+        barraTipos.innerHTML = opciones
+          .map((tipo) => {
+            const esActivo = vistaActual === "coleccion" && tipoPrendaActivo === tipo;
+            const etiqueta = tipo === "Todos" ? "Todas las prendas" : tipo;
+            return `
+              <button
+                type="button"
+                class="btn-tipo-prenda ${esActivo ? "activo" : ""}"
+                onclick="abrirFiltroTipoPrenda('${tipo}')"
+              >
+                ${etiqueta} <span class="count-tag">${conteoTipos[tipo] || 0}</span>
+              </button>
+            `;
+          })
+          .join("");
+      }
+    }
+
     function volverPortadaEditorial() {
       vistaActual = "portada";
+      coleccionActiva = "Todas";
+      tipoPrendaActivo = "Todos";
       buscadorInput.value = "";
       renderizar();
     }
 
-    function abrirColeccionCompleta(nombreColeccion) {
+    function abrirFiltroTipoPrenda(tipo) {
+      if (tipo === "Todos" && vistaActual === "portada") {
+        abrirColeccionCompleta("Todas", "Todos");
+        return;
+      }
+      vistaActual = "coleccion";
+      tipoPrendaActivo = tipo;
+      renderizar();
+      const target = document.getElementById("barra-tipos-prenda");
+      if (target) {
+        window.scrollTo({ top: target.offsetTop - 90, behavior: "smooth" });
+      }
+    }
+
+    function abrirColeccionCompleta(nombreColeccion, tipoPrenda = null) {
       vistaActual = "coleccion";
       coleccionActiva = nombreColeccion;
+      if (tipoPrenda !== null) {
+        tipoPrendaActivo = tipoPrenda;
+      }
       renderizar();
-      window.scrollTo({ top: document.querySelector(".buscador-wrap").offsetTop - 90, behavior: "smooth" });
+      const target = document.getElementById("barra-tipos-prenda");
+      if (target) {
+        window.scrollTo({ top: target.offsetTop - 90, behavior: "smooth" });
+      }
+    }
+
+    function cambiarSubfiltroPrenda(tipo) {
+      tipoPrendaActivo = tipo;
+      renderizar();
     }
 
     function cambiarTabDestacados(col) {
@@ -1352,19 +1628,19 @@
       const q = buscadorInput.value.trim();
       if (q.length > 0) {
         vistaActual = "coleccion";
-        coleccionActiva = "Todas";
-      } else {
+      } else if (coleccionActiva === "Todas" && tipoPrendaActivo === "Todos") {
         vistaActual = "portada";
       }
       renderizar();
     }
 
-    // Tarjeta limpia estilo Pineda Covalin (foto vertical, zoom hover, botón "Elige Opciones")
+    // Tarjeta limpia estilo Pineda Covalin
     function crearTarjetaEditorialHTML(prod) {
       return `
         <article class="pc-product-card">
           <div class="pc-img-stage" onclick="abrirModalPrenda('${prod.id}')">
             <span class="pc-code-pill">${prod.codigo}</span>
+            <span class="pc-type-pill">${prod.tipoPrenda}</span>
             <img
               src="${RUTA_IMG}${prod.archivo}"
               alt="${prod.nombre}"
@@ -1383,13 +1659,14 @@
     }
 
     function renderizar() {
+      renderizarMenusPrendas();
       const textoBusqueda = buscadorInput.value.trim().toLowerCase();
 
       // =========================================================================
       // MODO 1: PORTADA EDITORIAL INSPIRADA EN PINEDA COVALIN
       // =========================================================================
       if (vistaActual === "portada" && textoBusqueda === "") {
-        // Bloque 1: Colecciones Destacadas (Tabs superiores + Carrusel horizontal + Botón "Ver Colección")
+        // Bloque 1: Colecciones Destacadas
         const tabsDestacados = ["Marvel", "Civil Regime", "Anime", "Disney"];
         const itemsDestacados = todasLasPrendas.filter((p) => p.coleccion === tabDestacadosActiva).slice(0, 10);
 
@@ -1402,7 +1679,7 @@
 
         const carruselDestacadosHTML = itemsDestacados.map(crearTarjetaEditorialHTML).join("");
 
-        // Bloque 2: Segunda vitrina por temática (Terror / Star Wars / DC Comics / Caricaturas)
+        // Bloque 2: Segunda vitrina por temática
         const tabsUniverso = ["Terror", "DC Comics", "Star Wars", "Caricaturas"];
         const itemsUniverso = todasLasPrendas.filter((p) => p.coleccion === tabUniversoActiva).slice(0, 10);
 
@@ -1415,7 +1692,33 @@
 
         const carruselUniversoHTML = itemsUniverso.map(crearTarjetaEditorialHTML).join("");
 
-        // Bloque 3: Sección "COMPRA POR CATEGORÍA" (Tarjetas verticales editoriales)
+        // Bloque 3: Sección "COMPRA POR TIPO DE PRENDA"
+        const conteoTipos = {};
+        todasLasPrendas.forEach((p) => {
+          conteoTipos[p.tipoPrenda] = (conteoTipos[p.tipoPrenda] || 0) + 1;
+        });
+
+        const tiposPrendaCardsHTML = ORDEN_TIPOS_PRENDA.map((tipo) => {
+          const total = conteoTipos[tipo] || 0;
+          if (!total) return "";
+          const portada = PORTADAS_TIPO_PRENDA[tipo] || "prenda-001.jpg";
+          return `
+            <div class="pc-cat-card" onclick="abrirColeccionCompleta('Todas', '${tipo}')">
+              <img
+                src="${RUTA_IMG}${portada}"
+                alt="${tipo}"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/600x800/0b0b16/00a8ff?text=${encodeURIComponent(tipo)}'"
+              >
+              <div class="pc-cat-caption">
+                <h3>${tipo}</h3>
+                <span>Ver ${tipo} (${total})</span>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        // Bloque 4: Sección "COMPRA POR COLECCIÓN"
         const conteo = {};
         todasLasPrendas.forEach((p) => {
           conteo[p.coleccion] = (conteo[p.coleccion] || 0) + 1;
@@ -1426,7 +1729,7 @@
           if (!total) return "";
           const portada = PORTADAS_CATEGORIA[col] || "prenda-001.jpg";
           return `
-            <div class="pc-cat-card" onclick="abrirColeccionCompleta('${col.replace(/'/g, "\\'")}')">
+            <div class="pc-cat-card" onclick="abrirColeccionCompleta('${col.replace(/'/g, "\'")}', 'Todos')">
               <img
                 src="${RUTA_IMG}${portada}"
                 alt="${col}"
@@ -1456,7 +1759,7 @@
               <button class="pc-arrow next" onclick="moverCarrusel('track-destacados', 1)" title="Siguiente">&#10095;</button>
             </div>
             <div class="pc-cta-center">
-              <button class="btn-editorial" onclick="abrirColeccionCompleta('${tabDestacadosActiva}')">
+              <button class="btn-editorial" onclick="abrirColeccionCompleta('${tabDestacadosActiva}', 'Todos')">
                 Ver Colección ${tabDestacadosActiva}
               </button>
             </div>
@@ -1476,16 +1779,26 @@
               <button class="pc-arrow next" onclick="moverCarrusel('track-universo', 1)" title="Siguiente">&#10095;</button>
             </div>
             <div class="pc-cta-center">
-              <button class="btn-editorial" onclick="abrirColeccionCompleta('${tabUniversoActiva}')">
+              <button class="btn-editorial" onclick="abrirColeccionCompleta('${tabUniversoActiva}', 'Todos')">
                 Ver Todos
               </button>
             </div>
           </section>
 
-          <!-- BLOQUE 3: COMPRA POR CATEGORÍA -->
+          <!-- BLOQUE 3: COMPRA POR TIPO DE PRENDA -->
+          <section class="pc-bloque" id="seccion-prendas">
+            <div class="pc-bloque-header">
+              <h2>Compra por Tipo de Prenda</h2>
+            </div>
+            <div class="pc-cat-grid">
+              ${tiposPrendaCardsHTML}
+            </div>
+          </section>
+
+          <!-- BLOQUE 4: COMPRA POR COLECCIÓN -->
           <section class="pc-bloque" id="seccion-categorias">
             <div class="pc-bloque-header">
-              <h2>Compra por Categoría</h2>
+              <h2>Compra por Colección</h2>
             </div>
             <div class="pc-cat-grid">
               ${categoriasCardsHTML}
@@ -1496,50 +1809,81 @@
       }
 
       // =========================================================================
-      // MODO 2: VISTA DE COLECCIÓN COMPLETA O RESULTADOS DE BÚSQUEDA
+      // MODO 2: VISTA DE COLECCIÓN / TIPO DE PRENDA / RESULTADOS DE BÚSQUEDA
       // =========================================================================
-      const esTodas = coleccionActiva === "Todas";
+      const esTodasCol = coleccionActiva === "Todas";
+      const esTodosTipos = tipoPrendaActivo === "Todos";
+
       const filtradas = todasLasPrendas.filter((p) => {
-        const matchCol = esTodas || p.coleccion === coleccionActiva;
-        if (!matchCol) return false;
+        const matchCol = esTodasCol || p.coleccion === coleccionActiva;
+        const matchTipo = esTodosTipos || p.tipoPrenda === tipoPrendaActivo;
+        if (!matchCol || !matchTipo) return false;
         if (!textoBusqueda) return true;
         return (
           p.nombre.toLowerCase().includes(textoBusqueda) ||
           p.coleccion.toLowerCase().includes(textoBusqueda) ||
+          p.tipoPrenda.toLowerCase().includes(textoBusqueda) ||
           p.archivo.toLowerCase().includes(textoBusqueda) ||
           p.codigo.toLowerCase().includes(textoBusqueda)
         );
       });
 
-      const tabsNavegacionHTML = [`<button class="pc-tab ${esTodas ? "activo" : ""}" onclick="abrirColeccionCompleta('Todas')">Todas</button>`]
+      // Título dinámico según filtro combinado
+      let tituloVista = "Catálogo Completo";
+      if (!esTodasCol && !esTodosTipos) {
+        tituloVista = `${tipoPrendaActivo} &bull; ${coleccionActiva}`;
+      } else if (!esTodasCol) {
+        tituloVista = coleccionActiva;
+      } else if (!esTodosTipos) {
+        tituloVista = tipoPrendaActivo;
+      }
+
+      const tabsNavegacionHTML = [`<button class="pc-tab ${esTodasCol ? "activo" : ""}" onclick="abrirColeccionCompleta('Todas')">Todas las colecciones</button>`]
         .concat(
           ORDEN_COLECCIONES.map(
             (col) =>
-              `<button class="pc-tab ${coleccionActiva === col ? "activo" : ""}" onclick="abrirColeccionCompleta('${col.replace(/'/g, "\\'")}')">${col}</button>`
+              `<button class="pc-tab ${coleccionActiva === col ? "activo" : ""}" onclick="abrirColeccionCompleta('${col.replace(/'/g, "\'")}')">${col}</button>`
           )
         )
         .join("");
 
+      const subfiltrosPrendaHTML = ["Todos", ...ORDEN_TIPOS_PRENDA]
+        .map((tipo) => {
+          const countEnCol = todasLasPrendas.filter(
+            (p) => (esTodasCol || p.coleccion === coleccionActiva) && (tipo === "Todos" || p.tipoPrenda === tipo)
+          ).length;
+          return `
+            <button
+              class="pc-subpill ${tipoPrendaActivo === tipo ? "activo" : ""}"
+              onclick="cambiarSubfiltroPrenda('${tipo}')"
+            >
+              ${tipo === "Todos" ? "Todas las prendas" : tipo} (${countEnCol})
+            </button>
+          `;
+        })
+        .join("");
+
       const gridProductosHTML = filtradas.length
         ? `<div class="pc-full-grid">${filtradas.map(crearTarjetaEditorialHTML).join("")}</div>`
-        : `<p style="text-align:center; color: var(--text-muted); padding: 50px 0;">No se encontraron piezas con ese término de búsqueda.</p>`;
+        : `<p style="text-align:center; color: var(--text-muted); padding: 50px 0;">No se encontraron piezas con esa combinación de filtros.</p>`;
 
       zonaDinamica.innerHTML = `
         <div class="vista-coleccion-header">
           <button class="btn-regresar" onclick="volverPortadaEditorial()">&#8592; Inicio</button>
           <div class="vista-coleccion-titulo">
-            <h2>${esTodas ? "Catálogo Completo" : coleccionActiva}</h2>
+            <h2>${tituloVista}</h2>
             <p>${filtradas.length} ${filtradas.length === 1 ? "pieza disponible" : "piezas disponibles"}</p>
           </div>
           <div style="width: 90px;"></div>
         </div>
         <div class="pc-tabs">${tabsNavegacionHTML}</div>
+        <div class="pc-subfiltros-prenda">${subfiltrosPrendaHTML}</div>
         ${gridProductosHTML}
       `;
     }
 
     // =========================================================================
-    // MODAL DE VISTA RÁPIDA GRANDE (CASI MITAD DE PANTALLA)
+    // MODAL DE VISTA RÁPIDA GRANDE
     // =========================================================================
     function abrirModalPrenda(id) {
       const prod = todasLasPrendas.find((p) => p.id === String(id));
@@ -1552,6 +1896,7 @@
       };
 
       document.getElementById("modal-col").textContent = prod.coleccion;
+      document.getElementById("modal-tipo").textContent = prod.tipoPrenda;
       document.getElementById("modal-code").textContent = prod.codigo;
       document.getElementById("modal-nombre").textContent = prod.nombre;
       document.getElementById("modal-precio").textContent = prod.precio;
@@ -1561,7 +1906,7 @@
 
       document.getElementById("modal-btn-comprar").onclick = function() {
         const mensaje = encodeURIComponent(
-          `Hola SOMAFITX, me interesa la prenda ${prod.archivo} (${prod.nombre}) de la colección ${prod.coleccion} en talla ${tallaSeleccionadaModal} (${prod.precio}).`
+          `Hola SOMAFITX, me interesa la prenda ${prod.archivo} (${prod.nombre} - ${prod.tipoPrenda}) de la colección ${prod.coleccion} en talla ${tallaSeleccionadaModal} (${prod.precio}).`
         );
         window.open(`https://wa.me/${TELEFONO_WHATSAPP}?text=${mensaje}`, "_blank");
       };
