@@ -977,6 +977,139 @@
       filter: brightness(1.15);
     }
 
+
+    /* === SECCIÓN CÓDIGO QR INSTAGRAM === */
+    .ig-qr-section {
+      margin: 60px auto 20px;
+      padding: 42px 24px;
+      background: linear-gradient(145deg, rgba(11, 11, 22, 0.96) 0%, rgba(8, 8, 18, 0.98) 100%);
+      border: 1px solid rgba(0, 168, 255, 0.35);
+      border-radius: 12px;
+      box-shadow: -8px 0 32px rgba(139, 44, 245, 0.28), 8px 0 32px rgba(0, 102, 255, 0.28);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ig-qr-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan), var(--neon-blue));
+    }
+
+    .ig-qr-header h2 {
+      font-size: 1.45rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .ig-qr-header p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .ig-qr-card {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      background: #06060e;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(139, 44, 245, 0.5);
+      box-shadow: 0 0 26px rgba(0, 168, 255, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .ig-qr-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-color: var(--neon-cyan);
+      box-shadow: -6px 0 28px rgba(139, 44, 245, 0.5), 6px 0 28px rgba(0, 102, 255, 0.5);
+    }
+
+    .ig-qr-crop {
+      width: 240px;
+      height: 255px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .ig-qr-crop img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 14%;
+      display: block;
+    }
+
+    .ig-qr-handle {
+      margin-top: 14px;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      background: linear-gradient(90deg, #ffffff, #00a8ff, #8b2cf5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .ig-qr-actions {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-ig-follow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      color: #ffffff;
+      text-decoration: none;
+      padding: 11px 26px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 18px rgba(139, 44, 245, 0.45);
+      transition: filter 0.2s, transform 0.2s;
+    }
+
+    .btn-ig-follow:hover {
+      filter: brightness(1.15);
+      transform: translateY(-1px);
+    }
+
+    .btn-ig-header {
+      background: rgba(139, 44, 245, 0.15);
+      border: 1px solid rgba(139, 44, 245, 0.55);
+      color: #e2e8f0;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+
+    .btn-ig-header:hover {
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      color: #ffffff;
+      border-color: transparent;
+    }
+
     footer {
       text-align: center;
       padding: 35px 20px;
@@ -1039,9 +1172,11 @@
       </div>
       <a href="#seccion-categorias" onclick="volverPortadaEditorial()">Colecciones</a>
       <a onclick="abrirColeccionCompleta('Todas', 'Todos')">Catálogo (316)</a>
+      <a href="#seccion-instagram">Instagram</a>
     </nav>
     <div class="header-actions">
       <span class="badge-envio">Envíos a todo México</span>
+      <a href="https://www.instagram.com/somafitx/" class="btn-ig-header" target="_blank" rel="noopener noreferrer">@SOMAFITX</a>
       <a href="https://wa.me/525500000000" class="btn-ws-header" target="_blank">WhatsApp Ventas</a>
     </div>
   </header>
@@ -1073,6 +1208,25 @@
 
     <!-- Zona dinámica: Portada Editorial tipo Pineda Covalin o Vista de Colección/Prenda -->
     <div id="zona-dinamica"></div>
+
+    <!-- Sección Código QR Instagram Oficial -->
+    <section class="ig-qr-section" id="seccion-instagram">
+      <div class="ig-qr-header">
+        <h2>Síguenos en Instagram</h2>
+        <p>Escanea el código QR con tu cámara o haz clic para conocer lanzamientos, drops y promociones exclusivas.</p>
+      </div>
+      <a href="https://www.instagram.com/somafitx/" target="_blank" rel="noopener noreferrer" class="ig-qr-card" title="Abrir @SOMAFITX en Instagram">
+        <div class="ig-qr-crop">
+          <img src="Instagram.jpeg" alt="Código QR Instagram @SOMAFITX" loading="lazy">
+        </div>
+        <span class="ig-qr-handle">@SOMAFITX</span>
+      </a>
+      <div class="ig-qr-actions">
+        <a href="https://www.instagram.com/somafitx/" target="_blank" rel="noopener noreferrer" class="btn-ig-follow">
+          Abrir Instagram @SOMAFITX
+        </a>
+      </div>
+    </section>
   </main>
 
   <!-- Modal Vista Rápida ("Elige Opciones" / Vista Ampliada) -->
@@ -1099,7 +1253,7 @@
   </div>
 
   <footer>
-    &copy; 2026 SOMAFITX Store &mdash; Todos los derechos reservados.
+    &copy; 2026 SOMAFITX Store &mdash; Todos los derechos reservados. &bull; <a href="https://www.instagram.com/somafitx/" target="_blank" rel="noopener noreferrer" style="color: var(--neon-cyan); text-decoration: none;">Instagram @SOMAFITX</a>
   </footer>
 
   <script>
@@ -2006,3 +2160,4 @@
 
 </body>
 </html>
+```[cite: 330]
