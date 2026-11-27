@@ -540,7 +540,7 @@
     // 1. Cambia este número por tu WhatsApp (código de país + número sin espacios)
     const TELEFONO_WHATSAPP = "525500000000";
 
-    // 2. Ruta de la carpeta de imágenes
+    // 2. Ruta de la carpeta de imágenes (C:\Users\somaf\OneDrive\Documents\GitHub\DESARROLLO\img)
     const RUTA_IMG = "img/";
 
     // 3. Lista exacta de las 315 imágenes
@@ -612,6 +612,7 @@
 
     // 4. Datos detallados de prendas clasificadas por colección
     const CATALOGO_CLASIFICADO = {
+      // Clasificaciones originales
       "prenda-014.jpg": { coleccion: "IT Chapter Two", nombre: "IT Chapter Two (Pennywise)", precio: "$1,599 MXN", tallas: ["M"] },
       "prenda-043.jpg": { coleccion: "Disney - The Nightmare Before Christmas", nombre: "Tim Burton's The Nightmare Before Christmas", precio: "$1,599 MXN", tallas: ["S", "M"] },
       "prenda-073.jpg": { coleccion: "Misfits", nombre: "Misfits (Static Age)", precio: "$1,599 MXN", tallas: ["M"] },
@@ -626,19 +627,96 @@
       "prenda-213.jpg": { coleccion: "Disney - Mickey Mouse", nombre: "Disney Mickey Mouse", precio: "$1,599 MXN", tallas: ["M"] },
       "prenda-237.jpg": { coleccion: "Street Fighter", nombre: "Street Fighter Champion Edition", precio: "$1,799 MXN", tallas: ["M"] },
 
-      // Clasificaciones adicionales identificadas en el video (revisa precios y tallas)
+      // Identificaciones del video (revisa precios y tallas antes de publicar)
       "prenda-030.jpg": { coleccion: "Spider-Man / Marvel", nombre: "Marvel / Spider-Man #030", precio: "$4,800 MXN", tallas: ["M"] },
+      "prenda-042.jpg": { coleccion: "Spider-Man / Marvel", nombre: "Marvel / Avengers #042", precio: "$1,599 MXN", tallas: ["M"] },
       "prenda-128.jpg": { coleccion: "Spider-Man / Marvel", nombre: "Spider-Man #128", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-181.jpg": { coleccion: "Spider-Man / Marvel", nombre: "Marvel / Spider-Man #181", precio: "$5,800 MXN", tallas: ["M", "L"] },
+      "prenda-306.jpg": { coleccion: "Spider-Man / Marvel", nombre: "Spider-Man #306", precio: "$1,799 MXN", tallas: ["L"] },
       "prenda-311.jpg": { coleccion: "Spider-Man / Marvel", nombre: "Spider-Man #311", precio: "$1,800 MXN", tallas: ["M"] },
       "prenda-312.jpg": { coleccion: "Spider-Man / Marvel", nombre: "Spider-Man #312", precio: "$1,800 MXN", tallas: ["M", "L"] },
+
+      "prenda-310.jpg": { coleccion: "Street Fighter", nombre: "Street Fighter #310", precio: "$4,800 MXN", tallas: ["S"] },
+
       "prenda-041.jpg": { coleccion: "Chainsaw Man", nombre: "Chainsaw Man #041", precio: "$1,599 MXN", tallas: ["M"] },
       "prenda-065.jpg": { coleccion: "Chainsaw Man", nombre: "Chainsaw Man #065", precio: "$1,599 MXN", tallas: ["M"] },
       "prenda-160.jpg": { coleccion: "Chainsaw Man", nombre: "Chainsaw Man #160", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-226.jpg": { coleccion: "Chainsaw Man", nombre: "Chainsaw Man #226", precio: "$1,599 MXN", tallas: ["M"] },
       "prenda-292.jpg": { coleccion: "Chainsaw Man", nombre: "Chainsaw Man #292", precio: "$1,599 MXN", tallas: ["M"] },
-      "prenda-293.jpg": { coleccion: "Chainsaw Man", nombre: "Chainsaw Man #293", precio: "$1,599 MXN", tallas: ["M"] }
+      "prenda-293.jpg": { coleccion: "Chainsaw Man", nombre: "Chainsaw Man #293", precio: "$1,599 MXN", tallas: ["M"] },
+
+      "prenda-008.jpg": { coleccion: "Disney - Mickey Mouse", nombre: "Disney #008", precio: "$1,099 MXN", tallas: ["S", "M", "L", "XL"] },
+      "prenda-110.jpg": { coleccion: "Disney - Mickey Mouse", nombre: "Mickey Mouse #110", precio: "$1,599 MXN", tallas: ["M", "L"] },
+      "prenda-119.jpg": { coleccion: "Disney - Mickey Mouse", nombre: "Mickey & Friends #119", precio: "$1,599 MXN", tallas: ["L"] },
+      "prenda-120.jpg": { coleccion: "Disney - Mickey Mouse", nombre: "Mickey Mouse #120", precio: "$1,599 MXN", tallas: ["S", "M", "L"] },
+      "prenda-176.jpg": { coleccion: "Disney - Mickey Mouse", nombre: "Mickey Mouse #176", precio: "$1,599 MXN", tallas: ["L"] },
+      "prenda-189.jpg": { coleccion: "Disney - Mickey Mouse", nombre: "Mickey Mouse #189", precio: "$1,599 MXN", tallas: ["M"] },
+
+      "prenda-005.jpg": { coleccion: "Disney Villains", nombre: "Disney Villains #005", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-060.jpg": { coleccion: "Disney Villains", nombre: "Disney Villains #060", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-079.jpg": { coleccion: "Disney Villains", nombre: "Disney Villains #079", precio: "$1,599 MXN", tallas: ["M"] },
+
+      "prenda-054.jpg": { coleccion: "Disney - The Nightmare Before Christmas", nombre: "The Nightmare Before Christmas #054", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-057.jpg": { coleccion: "Disney - The Nightmare Before Christmas", nombre: "The Nightmare Before Christmas #057", precio: "$2,699 MXN", tallas: ["M", "L"] },
+      "prenda-088.jpg": { coleccion: "Disney - The Nightmare Before Christmas", nombre: "The Nightmare Before Christmas #088", precio: "$1,599 MXN", tallas: ["M", "L"] },
+      "prenda-089.jpg": { coleccion: "Disney - The Nightmare Before Christmas", nombre: "The Nightmare Before Christmas #089", precio: "$1,099 MXN", tallas: ["S", "M", "L", "XL"] },
+      "prenda-090.jpg": { coleccion: "Disney - The Nightmare Before Christmas", nombre: "The Nightmare Before Christmas #090", precio: "$1,049 MXN", tallas: ["S", "M", "L", "XL"] },
+      "prenda-102.jpg": { coleccion: "Disney - The Nightmare Before Christmas", nombre: "The Nightmare Before Christmas #102", precio: "$1,099 MXN", tallas: ["S", "M", "L", "XL"] },
+      "prenda-261.jpg": { coleccion: "Disney - The Nightmare Before Christmas", nombre: "The Nightmare Before Christmas #261", precio: "$4,899 MXN", tallas: ["M"] },
+
+      "prenda-013.jpg": { coleccion: "IT Chapter Two", nombre: "IT Chapter Two / Derry #013", precio: "$1,599 MXN", tallas: ["L"] },
+      "prenda-020.jpg": { coleccion: "IT Chapter Two", nombre: "IT Chapter Two / Derry #020", precio: "$1,599 MXN", tallas: ["L"] },
+      "prenda-137.jpg": { coleccion: "IT Chapter Two", nombre: "IT Chapter Two #137", precio: "$1,599 MXN", tallas: ["L"] },
+      "prenda-263.jpg": { coleccion: "IT Chapter Two", nombre: "IT Chapter Two / Derry #263", precio: "$1,599 MXN", tallas: ["M"] },
+
+      "prenda-196.jpg": { coleccion: "Misfits", nombre: "Misfits #196", precio: "$1,599 MXN", tallas: ["L"] },
+      "prenda-240.jpg": { coleccion: "Misfits", nombre: "Misfits #240", precio: "$1,799 MXN", tallas: ["M", "L"] },
+      "prenda-309.jpg": { coleccion: "Misfits", nombre: "Misfits #309", precio: "$1,799 MXN", tallas: ["XL"] },
+
+      "prenda-047.jpg": { coleccion: "The Lost Boys", nombre: "The Lost Boys #047", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-099.jpg": { coleccion: "The Lost Boys", nombre: "The Lost Boys #099", precio: "$1,599 MXN", tallas: ["M"] },
+
+      "prenda-019.jpg": { coleccion: "Halloween", nombre: "Halloween / Michael Myers #019", precio: "$1,599 MXN", tallas: ["L"] },
+      "prenda-037.jpg": { coleccion: "Halloween", nombre: "Halloween II #037", precio: "$2,699 MXN", tallas: ["L"] },
+      "prenda-052.jpg": { coleccion: "Halloween", nombre: "Halloween II #052", precio: "$1,599 MXN", tallas: ["L"] },
+      "prenda-059.jpg": { coleccion: "Halloween", nombre: "Halloween II #059", precio: "$2,699 MXN", tallas: ["L"] },
+      "prenda-194.jpg": { coleccion: "Halloween", nombre: "Halloween II #194", precio: "$1,599 MXN", tallas: ["L"] },
+
+      "prenda-010.jpg": { coleccion: "Scream", nombre: "Ghostface / Scream #010", precio: "$1,599 MXN", tallas: ["S", "M", "L", "XL"] },
+      "prenda-012.jpg": { coleccion: "Scream", nombre: "Ghostface / Scream #012", precio: "$1,599 MXN", tallas: ["S", "M", "L", "XL"] },
+      "prenda-018.jpg": { coleccion: "Scream", nombre: "Ghostface / Scream #018", precio: "$1,599 MXN", tallas: ["S", "M", "L", "XL"] },
+      "prenda-027.jpg": { coleccion: "Scream", nombre: "Ghostface / Scream #027", precio: "$1,599 MXN", tallas: ["M", "L"] },
+      "prenda-049.jpg": { coleccion: "Scream", nombre: "Ghostface / Scream #049", precio: "$1,599 MXN", tallas: ["S", "M", "L", "XL"] },
+      "prenda-230.jpg": { coleccion: "Scream", nombre: "Ghostface / Scream #230", precio: "$1,599 MXN", tallas: ["L"] },
+      "prenda-243.jpg": { coleccion: "Scream", nombre: "Ghostface / Scream #243", precio: "$1,599 MXN", tallas: ["S", "M", "L", "XL"] },
+
+      "prenda-024.jpg": { coleccion: "Elvira", nombre: "Elvira #024", precio: "$1,599 MXN", tallas: ["L"] },
+      "prenda-048.jpg": { coleccion: "Elvira", nombre: "Elvira #048", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-210.jpg": { coleccion: "Elvira", nombre: "Elvira #210", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-250.jpg": { coleccion: "Elvira", nombre: "Elvira #250", precio: "$1,599 MXN", tallas: ["M"] },
+
+      "prenda-075.jpg": { coleccion: "Friday the 13th", nombre: "Friday the 13th #075", precio: "$1,599 MXN", tallas: ["S", "M", "L", "XL"] },
+      "prenda-179.jpg": { coleccion: "Friday the 13th", nombre: "Friday the 13th #179", precio: "$2,599 MXN", tallas: ["S", "M", "L", "XL"] },
+
+      "prenda-203.jpg": { coleccion: "The Texas Chain Saw Massacre", nombre: "The Texas Chain Saw Massacre #203", precio: "$1,599 MXN", tallas: ["M", "L"] },
+      "prenda-077.jpg": { coleccion: "The Exorcist", nombre: "The Exorcist #077", precio: "$1,599 MXN", tallas: ["M"] },
+
+      "prenda-053.jpg": { coleccion: "Punisher", nombre: "Punisher #053", precio: "$1,599 MXN", tallas: ["XL"] },
+      "prenda-112.jpg": { coleccion: "Punisher", nombre: "Punisher #112", precio: "$1,599 MXN", tallas: ["L"] },
+
+      "prenda-103.jpg": { coleccion: "Slayer", nombre: "Slayer #103", precio: "$1,599 MXN", tallas: ["L"] },
+
+      "prenda-111.jpg": { coleccion: "Danhausen", nombre: "Danhausen #111", precio: "$1,599 MXN", tallas: ["S", "M", "L", "XL"] },
+      "prenda-148.jpg": { coleccion: "Danhausen", nombre: "Danhausen #148", precio: "$1,599 MXN", tallas: ["M"] },
+      "prenda-308.jpg": { coleccion: "Danhausen", nombre: "Danhausen #308", precio: "$1,599 MXN", tallas: ["L", "Y"] },
+
+      "prenda-276.jpg": { coleccion: "Bratz", nombre: "Bratz #276", precio: "$1,599 MXN", tallas: ["S", "M", "L", "XL"] },
+      "prenda-277.jpg": { coleccion: "Bratz", nombre: "Bratz #277", precio: "$1,599 MXN", tallas: ["S", "M", "L", "XL"] },
+
+      "prenda-284.jpg": { coleccion: "The Powerpuff Girls", nombre: "The Powerpuff Girls #284", precio: "$1,599 MXN", tallas: ["S"] }
     };
 
-    // Orden de visualización de las colecciones
+    // Orden de visualización de las colecciones (respetando el orden del video + nuevas colecciones)
     const ORDEN_COLECCIONES = [
       "Chainsaw Man",
       "Disney - Mickey Mouse",
@@ -649,6 +727,18 @@
       "Street Fighter",
       "The Lost Boys",
       "The Mummy",
+      "Disney Villains",
+      "Halloween",
+      "Scream",
+      "Elvira",
+      "Friday the 13th",
+      "The Texas Chain Saw Massacre",
+      "The Exorcist",
+      "Punisher",
+      "Slayer",
+      "Danhausen",
+      "Bratz",
+      "The Powerpuff Girls",
       "Colección General"
     ];
 
