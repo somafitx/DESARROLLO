@@ -6,17 +6,18 @@
   <title>SOMAFITX | Catálogo Completo &amp; Colaboraciones</title>
   <style>
     :root {
-      --bg-dark: #06060c;
-      --bg-card: #0c0c16;
-      --bg-input: #121222;
+      --bg-dark: #05050b;
+      --bg-card: #0b0b16;
+      --bg-input: #111122;
       --text-main: #ffffff;
-      --text-muted: #9fa0b8;
-      --neon-purple: #9333ea;
-      --neon-violet: #b5179e;
-      --neon-blue: #2563eb;
-      --neon-cyan: #00b4d8;
-      --neon-glow-blue: rgba(37, 99, 235, 0.45);
-      --neon-glow-purple: rgba(147, 51, 234, 0.45);
+      --text-muted: #a3a8c2;
+      --neon-purple: #8b2cf5;
+      --neon-violet: #a855f7;
+      --neon-blue: #0066ff;
+      --neon-cyan: #00a8ff;
+      --steel-silver: #cbd5e1;
+      --neon-glow-blue: rgba(0, 102, 255, 0.55);
+      --neon-glow-purple: rgba(139, 44, 245, 0.55);
     }
 
     * {
@@ -161,13 +162,18 @@
     }
 
     .hero-logo {
-      width: 160px;
-      height: 160px;
-      margin: 0 auto 18px;
+      width: 240px;
+      height: 240px;
+      margin: 0 auto 22px;
       border-radius: 50%;
-      border: 3px solid #00b4d8;
-      box-shadow: 0 0 30px var(--neon-glow-blue), 0 0 15px var(--neon-glow-purple);
-      object-fit: cover;
+      background: radial-gradient(circle, #141428 0%, #05050b 100%);
+      padding: 6px;
+      border: 3px solid transparent;
+      background-image: linear-gradient(#080812, #080812), linear-gradient(135deg, #8b2cf5, #00a8ff);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      box-shadow: -8px 0 32px rgba(139, 44, 245, 0.55), 8px 0 32px rgba(0, 102, 255, 0.55);
+      object-fit: contain;
     }
 
     .hero h2 {
@@ -176,7 +182,7 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-bottom: 8px;
-      background: linear-gradient(90deg, #ffffff, #00b4d8, #b5179e);
+      background: linear-gradient(90deg, #e2e8f0 0%, #ffffff 45%, #8b2cf5 75%, #00a8ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -218,16 +224,23 @@
 
     .lema-bar {
       margin-top: 22px;
-      font-size: 0.8rem;
-      font-weight: 700;
+      font-size: 0.82rem;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 4px;
-      color: #b5179e;
+      color: #e2e8f0;
     }
 
-    .lema-bar span {
-      color: #00b4d8;
+    .lema-bar span:first-child {
+      color: #8b2cf5;
       margin: 0 10px;
+      text-shadow: 0 0 8px rgba(139, 44, 245, 0.8);
+    }
+
+    .lema-bar span:last-child {
+      color: #00a8ff;
+      margin: 0 10px;
+      text-shadow: 0 0 8px rgba(0, 168, 255, 0.8);
     }
 
     .seccion-titulo {
@@ -489,7 +502,7 @@
 
   <header>
     <div class="header-logo">
-      <img src="img/logo.jpg" alt="SOMAFITX Logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=100&q=80'">
+      <img src="somafitx.jpeg" alt="SOMAFITX Logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=100&q=80'">
       <h1>SOMAFITX</h1>
     </div>
     <nav class="nav-links">
@@ -505,9 +518,9 @@
 
   <section class="hero">
     <div class="hero-content">
-      <img src="img/logo.jpg" alt="SOMAFITX Logo" class="hero-logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=200&q=80'">
+      <img src="somafitx.jpeg" alt="SOMAFITX Logo" class="hero-logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=200&q=80'">
       <h2>SOMAFITX</h2>
-      <h3>Ropa Deportiva &amp; Colaboraciones Exclusivas</h3>
+      <h3>Suplementos • Ropa Deportiva &amp; Colaboraciones</h3>
       <p>Catálogo completo de 315 piezas exclusivas. Filtra por colección o busca tu número de prenda y pide directo por WhatsApp.</p>
       <a href="#catalogo" class="btn-hero">Explorar 315 Prendas</a>
       <div class="lema-bar">
