@@ -229,7 +229,7 @@
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       max-width: 800px;
     }
 
@@ -979,6 +979,59 @@
 
 
 
+
+    /* === COLABORACIONES FLOTANTES EN HERO === */
+    .hero-collabs-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-collab-pill {
+      position: absolute;
+      pointer-events: auto;
+      background: rgba(11, 11, 24, 0.72);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 168, 255, 0.38);
+      color: #e2e8f0;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(139, 44, 245, 0.28);
+      transition: all 0.25s ease;
+      animation: floatCollab 5.5s ease-in-out infinite;
+    }
+
+    .hero-collab-pill:hover {
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      border-color: transparent;
+      color: #ffffff;
+      transform: translateY(-3px) scale(1.07);
+      box-shadow: 0 0 22px rgba(0, 168, 255, 0.65);
+    }
+
+    @keyframes floatCollab {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* Posiciones repartidas en las zonas marcadas en rojo */
+    .hc-1 { top: 20%; left: 21%; animation-delay: 0s; }
+    .hc-2 { top: 15%; left: 32%; animation-delay: 0.7s; }
+    .hc-3 { top: 47%; left: 24%; animation-delay: 1.4s; }
+    .hc-4 { bottom: 16%; left: 19%; animation-delay: 2.1s; }
+
+    .hc-5 { top: 16%; right: 23%; animation-delay: 0.4s; }
+    .hc-6 { top: 22%; right: 6%; animation-delay: 1.1s; }
+    .hc-7 { top: 45%; right: 24%; animation-delay: 1.8s; }
+    .hc-8 { top: 53%; right: 8%; animation-delay: 2.5s; }
+    .hc-9 { bottom: 15%; right: 19%; animation-delay: 3.1s; }
+
     /* === CÓDIGO QR INSTAGRAM EN HERO (ESPACIO IZQUIERDO) === */
     .hero-qr-float {
       position: absolute;
@@ -1187,6 +1240,25 @@
       }
     }
 
+    @media (max-width: 1180px) {
+      .hero-collabs-layer {
+        position: relative;
+        inset: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 22px;
+        max-width: 680px;
+      }
+      .hero-collab-pill {
+        position: static;
+        animation: none;
+        font-size: 0.68rem;
+        padding: 6px 12px;
+      }
+    }
+
     @media (max-width: 768px) {
       .hero-qr-float {
         position: relative;
@@ -1267,6 +1339,17 @@
       <div class="lema-bar">
         FUERZA <span>•</span> DISCIPLINA <span>•</span> RESULTADOS
       </div>
+    </div>
+    <div class="hero-collabs-layer" aria-label="Colaboraciones y Colecciones">
+      <button type="button" class="hero-collab-pill hc-1" onclick="abrirColeccionCompleta('Marvel', 'Todos')">Marvel</button>
+      <button type="button" class="hero-collab-pill hc-2" onclick="abrirColeccionCompleta('DC Comics', 'Todos')">DC Comics</button>
+      <button type="button" class="hero-collab-pill hc-3" onclick="abrirColeccionCompleta('Civil Regime', 'Todos')">Civil Regime</button>
+      <button type="button" class="hero-collab-pill hc-4" onclick="abrirColeccionCompleta('Anime', 'Todos')">Anime</button>
+      <button type="button" class="hero-collab-pill hc-5" onclick="abrirColeccionCompleta('Terror', 'Todos')">Terror</button>
+      <button type="button" class="hero-collab-pill hc-6" onclick="abrirColeccionCompleta('Star Wars', 'Todos')">Star Wars</button>
+      <button type="button" class="hero-collab-pill hc-7" onclick="abrirColeccionCompleta('Disney', 'Todos')">Disney</button>
+      <button type="button" class="hero-collab-pill hc-8" onclick="abrirColeccionCompleta('Caricaturas', 'Todos')">Caricaturas</button>
+      <button type="button" class="hero-collab-pill hc-9" onclick="abrirColeccionCompleta('Otros', 'Todos')">Ediciones Especiales</button>
     </div>
   </section>
 
