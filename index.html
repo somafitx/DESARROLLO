@@ -978,6 +978,67 @@
     }
 
 
+
+    /* === CÓDIGO QR INSTAGRAM EN HERO (ESPACIO IZQUIERDO) === */
+    .hero-qr-float {
+      position: absolute;
+      left: 6%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(8, 8, 18, 0.88);
+      backdrop-filter: blur(10px);
+      padding: 12px 12px 10px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(0, 168, 255, 0.5);
+      box-shadow: -6px 0 24px rgba(139, 44, 245, 0.45), 6px 0 24px rgba(0, 102, 255, 0.45);
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .hero-qr-float:hover {
+      transform: translateY(-50%) scale(1.04);
+      border-color: var(--neon-cyan);
+      box-shadow: -8px 0 30px rgba(139, 44, 245, 0.7), 8px 0 30px rgba(0, 102, 255, 0.7);
+    }
+
+    .hero-qr-crop {
+      width: 155px;
+      height: 165px;
+      border-radius: 9px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .hero-qr-crop img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 14%;
+      display: block;
+    }
+
+    .hero-qr-label {
+      margin-top: 8px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #ffffff, #00a8ff, #8b2cf5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-qr-sub {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.8px;
+      margin-top: 1px;
+    }
+
     /* === SECCIÓN CÓDIGO QR INSTAGRAM === */
     .ig-qr-section {
       margin: 60px auto 20px;
@@ -1127,6 +1188,16 @@
     }
 
     @media (max-width: 768px) {
+      .hero-qr-float {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin-bottom: 22px;
+      }
+      .hero-qr-float:hover {
+        transform: scale(1.03);
+      }
       .nav-links {
         display: none;
       }
@@ -1182,6 +1253,13 @@
   </header>
 
   <section class="hero">
+    <a href="https://www.instagram.com/somafitx/" target="_blank" rel="noopener noreferrer" class="hero-qr-float" title="Escanea o haz clic para seguir a @SOMAFITX en Instagram">
+      <div class="hero-qr-crop">
+        <img src="Instagram.jpeg" alt="Código QR Instagram @SOMAFITX">
+      </div>
+      <span class="hero-qr-label">@SOMAFITX</span>
+      <span class="hero-qr-sub">Síguenos en Instagram</span>
+    </a>
     <div class="hero-content">
       <img src="somafitx.jpeg" alt="SOMAFITX Logo" class="hero-logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=200&q=80'">
       <h2>SOMAFITX</h2>
@@ -2160,4 +2238,3 @@
 
 </body>
 </html>
-```[cite: 330]
