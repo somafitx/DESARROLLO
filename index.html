@@ -977,9 +977,6 @@
       filter: brightness(1.15);
     }
 
-
-
-
     /* === COLABORACIONES FLOTANTES EN HERO === */
     .hero-collabs-layer {
       position: absolute;
@@ -1001,8 +998,9 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 0 18px rgba(139, 44, 245, 0.25);
-      transition: all 0.28s ease;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s ease, box-shadow 0.28s ease;
       animation: floatCollab 5.5s ease-in-out infinite;
+      will-change: transform;
     }
 
     .hero-collab-pill img {
@@ -1012,7 +1010,8 @@
       max-width: 135px;
       object-fit: contain;
       border-radius: 6px;
-      transition: transform 0.28s ease, filter 0.28s ease;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), filter 0.28s ease;
+      will-change: transform;
     }
 
     /* Ajustes individuales para logos con fondo blanco/claro o cuadrado */
@@ -1032,10 +1031,18 @@
       max-width: 148px;
     }
 
+    /* Zoom al pasar el cursor encima del logo */
     .hero-collab-pill:hover {
+      animation-play-state: paused;
+      z-index: 15;
       border-color: var(--neon-cyan);
-      transform: translateY(-4px) scale(1.08);
-      box-shadow: -4px 0 22px rgba(139, 44, 245, 0.6), 4px 0 22px rgba(0, 102, 255, 0.6);
+      transform: translateY(-4px) scale(1.24);
+      box-shadow: -6px 0 26px rgba(139, 44, 245, 0.7), 6px 0 26px rgba(0, 168, 255, 0.7);
+    }
+
+    .hero-collab-pill:hover img {
+      transform: scale(1.1);
+      filter: brightness(1.08);
     }
 
     @keyframes floatCollab {
@@ -1218,6 +1225,9 @@
         position: static;
         animation: none;
         padding: 6px 10px;
+      }
+      .hero-collab-pill:hover {
+        transform: translateY(-2px) scale(1.2);
       }
       .hero-collab-pill img {
         height: 28px;
