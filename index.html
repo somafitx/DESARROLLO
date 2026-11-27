@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SOMAFITX | Catálogo Completo &amp; Colaboraciones</title>
+  <title>SOMAFITX | Catálogo &amp; Colecciones</title>
   <style>
     :root {
-      --bg-dark: #06060c;
-      --bg-card: #0c0c16;
-      --bg-input: #121222;
+      --bg-dark: #05050b;
+      --bg-card: #0b0b16;
+      --bg-input: #111122;
       --text-main: #ffffff;
-      --text-muted: #9fa0b8;
-      --neon-purple: #9333ea;
-      --neon-violet: #b5179e;
-      --neon-blue: #2563eb;
-      --neon-cyan: #00b4d8;
-      --neon-glow-blue: rgba(37, 99, 235, 0.45);
-      --neon-glow-purple: rgba(147, 51, 234, 0.45);
+      --text-muted: #a3a8c2;
+      --neon-purple: #8b2cf5;
+      --neon-violet: #a855f7;
+      --neon-blue: #0066ff;
+      --neon-cyan: #00a8ff;
+      --steel-silver: #cbd5e1;
+      --neon-glow-blue: rgba(0, 102, 255, 0.55);
+      --neon-glow-purple: rgba(139, 44, 245, 0.55);
     }
 
     * {
@@ -37,10 +38,11 @@
       line-height: 1.5;
     }
 
+    /* === HEADER === */
     header {
       background: rgba(6, 6, 12, 0.95);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0, 180, 216, 0.25);
+      border-bottom: 1px solid rgba(0, 168, 255, 0.25);
       padding: 15px 5%;
       display: flex;
       justify-content: space-between;
@@ -56,6 +58,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      cursor: pointer;
     }
 
     .header-logo img {
@@ -71,7 +74,7 @@
       font-size: 1.4rem;
       font-weight: 900;
       letter-spacing: 2px;
-      background: linear-gradient(90deg, #fff, #00b4d8, #9333ea);
+      background: linear-gradient(90deg, #fff, #00a8ff, #8b2cf5);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -79,18 +82,87 @@
     .nav-links {
       display: flex;
       gap: 20px;
+      align-items: center;
     }
 
-    .nav-links a {
+    .nav-links > a, .nav-dropdown-btn {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
       transition: color 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
-    .nav-links a:hover {
+    .nav-links > a:hover, .nav-dropdown-btn:hover {
       color: var(--neon-cyan);
+    }
+
+    /* Dropdown de Prendas en Header */
+    .nav-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 10px;
+      background: rgba(11, 11, 22, 0.98);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 168, 255, 0.4);
+      border-radius: 6px;
+      min-width: 190px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 15px rgba(139, 44, 245, 0.25);
+      z-index: 200;
+      padding: 6px 0;
+    }
+
+    .nav-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 0;
+      right: 0;
+      height: 12px;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu {
+      display: block;
+    }
+
+    .nav-dropdown-menu a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-dropdown-menu a:hover {
+      background: linear-gradient(90deg, rgba(0, 102, 255, 0.25), rgba(139, 44, 245, 0.25));
+      color: var(--neon-cyan);
+    }
+
+    .nav-dropdown-menu a span {
+      font-size: 0.72rem;
+      color: var(--text-muted);
     }
 
     .header-actions {
@@ -101,30 +173,31 @@
 
     .badge-envio {
       font-size: 0.78rem;
-      color: #00b4d8;
-      border: 1px solid rgba(0, 180, 216, 0.4);
-      background: rgba(0, 180, 216, 0.1);
+      color: #00a8ff;
+      border: 1px solid rgba(0, 168, 255, 0.4);
+      background: rgba(0, 168, 255, 0.1);
       padding: 5px 12px;
       border-radius: 999px;
       font-weight: 600;
     }
 
     .btn-ws-header {
-      background: linear-gradient(135deg, #2563eb, #9333ea);
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
       color: #fff;
       text-decoration: none;
       padding: 6px 14px;
       border-radius: 8px;
       font-size: 0.85rem;
       font-weight: 700;
-      box-shadow: 0 0 12px rgba(147, 51, 234, 0.4);
+      box-shadow: 0 0 12px rgba(139, 44, 245, 0.4);
     }
 
+    /* === HERO === */
     .hero {
       position: relative;
       background: linear-gradient(145deg, #05050a 0%, #0a0a14 100%);
-      border-bottom: 1px solid rgba(147, 51, 234, 0.2);
-      padding: 60px 5%;
+      border-bottom: 1px solid rgba(139, 44, 245, 0.2);
+      padding: 50px 5%;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -161,308 +234,746 @@
     }
 
     .hero-logo {
-      width: 160px;
-      height: 160px;
-      margin: 0 auto 18px;
+      width: 210px;
+      height: 210px;
+      margin: 0 auto 20px;
       border-radius: 50%;
-      border: 3px solid #00b4d8;
-      box-shadow: 0 0 30px var(--neon-glow-blue), 0 0 15px var(--neon-glow-purple);
-      object-fit: cover;
+      background: radial-gradient(circle, #141428 0%, #05050b 100%);
+      padding: 6px;
+      border: 3px solid transparent;
+      background-image: linear-gradient(#080812, #080812), linear-gradient(135deg, #8b2cf5, #00a8ff);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      box-shadow: -8px 0 32px rgba(139, 44, 245, 0.55), 8px 0 32px rgba(0, 102, 255, 0.55);
+      object-fit: contain;
     }
 
     .hero h2 {
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-bottom: 8px;
-      background: linear-gradient(90deg, #ffffff, #00b4d8, #b5179e);
+      background: linear-gradient(90deg, #e2e8f0 0%, #ffffff 45%, #8b2cf5 75%, #00a8ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero h3 {
-      font-size: 1.05rem;
-      color: #00b4d8;
+      font-size: 1rem;
+      color: #00a8ff;
       letter-spacing: 3px;
       text-transform: uppercase;
       margin-bottom: 12px;
       font-weight: 700;
     }
 
-    .hero p {
-      color: var(--text-muted);
-      max-width: 580px;
-      margin: 0 auto 20px;
-      font-size: 0.96rem;
-    }
-
-    .btn-hero {
-      background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-      color: #fff;
-      text-decoration: none;
-      padding: 12px 30px;
-      border-radius: 8px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
-      display: inline-block;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn-hero:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 25px rgba(0, 180, 216, 0.7);
-    }
-
     .lema-bar {
-      margin-top: 22px;
+      margin-top: 16px;
       font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      color: #b5179e;
-    }
-
-    .lema-bar span {
-      color: #00b4d8;
-      margin: 0 10px;
-    }
-
-    .seccion-titulo {
-      text-align: center;
-      margin: 45px 0 20px;
-      font-size: 1.8rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      position: relative;
-      padding: 0 15px;
+      letter-spacing: 4px;
+      color: #e2e8f0;
     }
 
-    .seccion-titulo::after {
-      content: '';
-      display: block;
-      width: 70px;
-      height: 3px;
-      background: linear-gradient(90deg, #00b4d8, #b5179e);
-      margin: 8px auto 0;
-      border-radius: 2px;
+    .lema-bar span:first-child {
+      color: #8b2cf5;
+      margin: 0 10px;
+      text-shadow: 0 0 8px rgba(139, 44, 245, 0.8);
     }
 
-    .controles-catalogo {
-      max-width: 1180px;
-      margin: 0 auto 30px;
-      padding: 0 20px;
+    .lema-bar span:last-child {
+      color: #00a8ff;
+      margin: 0 10px;
+      text-shadow: 0 0 8px rgba(0, 168, 255, 0.8);
+    }
+
+    /* === BARRA SUB-MENÚ DE PRENDAS (PLAYERAS, PANTS Y SHORT, SUDADERAS, GORRAS Y CALETAS) === */
+    .menu-tipos-prenda {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 26px auto 10px;
+      padding: 12px 16px;
+      background: rgba(11, 11, 22, 0.85);
+      border: 1px solid rgba(139, 44, 245, 0.25);
+      border-radius: 8px;
+      max-width: 960px;
+    }
+
+    .btn-tipo-prenda {
+      background: var(--bg-input);
+      color: var(--steel-silver);
+      border: 1px solid rgba(0, 168, 255, 0.25);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-tipo-prenda:hover {
+      border-color: var(--neon-cyan);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn-tipo-prenda.activo {
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+      border-color: transparent;
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(139, 44, 245, 0.5);
+    }
+
+    .btn-tipo-prenda .count-tag {
+      font-size: 0.7rem;
+      opacity: 0.85;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 1px 7px;
+      border-radius: 999px;
+    }
+
+    /* === CONTENEDOR PRINCIPAL === */
+    .contenedor-principal {
+      max-width: 1340px;
+      margin: 0 auto 80px;
+      padding: 0 4%;
+    }
+
+    /* === BUSCADOR MINIMALISTA === */
+    .buscador-wrap {
+      max-width: 540px;
+      margin: 26px auto 15px;
+      position: relative;
+    }
+
+    .buscador-wrap input {
+      width: 100%;
+      padding: 12px 20px;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 168, 255, 0.35);
+      background: var(--bg-input);
+      color: var(--text-main);
+      font-size: 0.9rem;
+      letter-spacing: 0.4px;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .buscador-wrap input:focus {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 18px rgba(0, 168, 255, 0.25);
+    }
+
+    /* =====================================================================
+       ESTILO EDITORIAL INSPIRADO EN PINEDA COVALIN (MANTENIENDO PALETA NEÓN)
+       ===================================================================== */
+
+    .pc-bloque {
+      margin-top: 52px;
+    }
+
+    .pc-bloque-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .pc-bloque-header h2 {
+      font-size: 1.55rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    /* Pestañas editoriales subrayadas */
+    .pc-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 22px;
+      border-bottom: 1px solid rgba(139, 44, 245, 0.2);
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+    }
+
+    .pc-tab {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      padding: 4px 2px;
+      position: relative;
+      transition: color 0.25s;
+    }
+
+    .pc-tab:hover {
+      color: #ffffff;
+    }
+
+    .pc-tab.activo {
+      color: var(--neon-cyan);
+    }
+
+    .pc-tab.activo::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -13px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
+      box-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    /* Sub-filtros por tipo de prenda dentro de la vista de colección */
+    .pc-subfiltros-prenda {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .pc-subpill {
+      background: rgba(17, 17, 34, 0.9);
+      border: 1px solid rgba(139, 44, 245, 0.35);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pc-subpill:hover {
+      color: #ffffff;
+      border-color: var(--neon-cyan);
+    }
+
+    .pc-subpill.activo {
+      background: rgba(0, 168, 255, 0.18);
+      border-color: var(--neon-cyan);
+      color: var(--neon-cyan);
+      box-shadow: 0 0 10px rgba(0, 168, 255, 0.25);
+    }
+
+    /* Carrusel horizontal estilo boutique con flechas laterales */
+    .pc-carousel-wrap {
+      position: relative;
+      display: flex;
       align-items: center;
     }
 
-    .buscador-box {
+    .pc-carousel-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc(25% - 18px);
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      padding: 12px 4px;
       width: 100%;
-      max-width: 480px;
     }
 
-    .buscador-box input {
-      width: 100%;
-      padding: 12px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 180, 216, 0.4);
-      background: var(--bg-input);
-      color: var(--text-main);
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+    .pc-carousel-track::-webkit-scrollbar {
+      display: none;
     }
 
-    .buscador-box input:focus {
+    .pc-arrow {
+      position: absolute;
+      top: 38%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(11, 11, 22, 0.92);
+      border: 1px solid rgba(0, 168, 255, 0.45);
+      color: #ffffff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+      transition: all 0.2s;
+    }
+
+    .pc-arrow:hover {
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+      border-color: transparent;
+      box-shadow: 0 0 16px var(--neon-glow-purple);
+    }
+
+    .pc-arrow.prev { left: -16px; }
+    .pc-arrow.next { right: -16px; }
+
+    /* === TARJETA EDITORIAL DE PRODUCTO === */
+    .pc-product-card {
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .pc-product-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .pc-img-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 168, 255, 0.2);
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      margin-bottom: 14px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pc-product-card:hover .pc-img-stage {
       border-color: var(--neon-cyan);
-      box-shadow: 0 0 15px rgba(0, 180, 216, 0.25);
+      box-shadow: -5px 0 22px rgba(139, 44, 245, 0.3), 5px 0 22px rgba(0, 102, 255, 0.3);
     }
 
-    .filtros-bar {
+    .pc-img-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .pc-product-card:hover .pc-img-stage img {
+      transform: scale(1.09);
+    }
+
+    .pc-code-pill {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(5, 5, 11, 0.82);
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .pc-type-pill {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(11, 11, 22, 0.86);
+      color: var(--neon-cyan);
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 3px;
+      border: 1px solid rgba(0, 168, 255, 0.35);
+    }
+
+    /* Botón flotante "ELIGE OPCIONES" */
+    .pc-quick-btn {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      background: rgba(6, 6, 14, 0.92);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      border: 1px solid var(--neon-cyan);
+      padding: 11px 10px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-radius: 4px;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s;
+    }
+
+    .pc-product-card:hover .pc-quick-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pc-quick-btn:hover {
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+      border-color: transparent;
+    }
+
+    .pc-prod-title {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #f1f5f9;
+      margin-bottom: 4px;
+      line-height: 1.35;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .pc-prod-title:hover {
+      color: var(--neon-cyan);
+    }
+
+    .pc-prod-price {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--neon-cyan);
+      margin-bottom: 3px;
+    }
+
+    .pc-prod-sizes {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.8px;
+    }
+
+    /* Botón centrado inferior "VER COLECCIÓN" */
+    .pc-cta-center {
+      text-align: center;
+      margin-top: 26px;
+    }
+
+    .btn-editorial {
+      display: inline-block;
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(0, 168, 255, 0.55);
+      padding: 12px 34px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-editorial:hover {
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+      border-color: transparent;
+      box-shadow: 0 0 20px rgba(139, 44, 245, 0.45);
+    }
+
+    /* === SECCIÓN "COMPRA POR TIPO DE PRENDA" Y "COMPRA POR COLECCIÓN" === */
+    .pc-cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .pc-cat-card {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid rgba(139, 44, 245, 0.3);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      text-align: center;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .pc-cat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--neon-cyan);
+      box-shadow: -6px 0 24px rgba(139, 44, 245, 0.35), 6px 0 24px rgba(0, 102, 255, 0.35);
+    }
+
+    .pc-cat-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.72;
+      transition: transform 0.6s ease, opacity 0.3s ease;
+    }
+
+    .pc-cat-card:hover img {
+      transform: scale(1.08);
+      opacity: 0.85;
+    }
+
+    .pc-cat-caption {
+      position: relative;
+      z-index: 2;
+      padding: 28px 18px 24px;
+      background: linear-gradient(to top, rgba(5, 5, 11, 0.96) 15%, rgba(5, 5, 11, 0.55) 65%, transparent 100%);
+    }
+
+    .pc-cat-caption h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .pc-cat-caption span {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--neon-cyan);
+      border-bottom: 1px solid var(--neon-cyan);
+      padding-bottom: 2px;
+    }
+
+    /* === VISTA INTERNA DE COLECCIÓN COMPLETA === */
+    .vista-coleccion-header {
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 0;
+      margin-top: 18px;
+      border-bottom: 1px solid rgba(139, 44, 245, 0.25);
+      margin-bottom: 24px;
+    }
+
+    .btn-regresar {
+      background: transparent;
+      color: var(--neon-cyan);
+      border: 1px solid rgba(0, 168, 255, 0.45);
+      padding: 9px 18px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-regresar:hover {
+      background: rgba(0, 168, 255, 0.15);
+    }
+
+    .vista-coleccion-titulo {
+      text-align: center;
+    }
+
+    .vista-coleccion-titulo h2 {
+      font-size: 1.65rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+
+    .vista-coleccion-titulo p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .pc-full-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px 22px;
+    }
+
+    /* === MODAL / VISTA RÁPIDA GRANDE === */
+    .modal-visor {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 3, 8, 0.88);
+      backdrop-filter: blur(10px);
+      z-index: 999;
+      display: none;
+      align-items: center;
       justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-visor.abierto {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-contenido {
+      background: #0c0c18;
+      border: 1px solid rgba(0, 168, 255, 0.45);
+      box-shadow: -12px 0 45px rgba(139, 44, 245, 0.45), 12px 0 45px rgba(0, 102, 255, 0.45);
+      border-radius: 10px;
+      width: 92%;
+      max-width: 980px;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      position: relative;
+    }
+
+    .modal-cerrar {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(15, 15, 30, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .modal-cerrar:hover {
+      background: var(--neon-purple);
+    }
+
+    .modal-img-box {
+      background: #07070f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      min-height: 480px;
+      border-right: 1px solid rgba(139, 44, 245, 0.2);
+    }
+
+    .modal-img-box img {
+      width: 100%;
+      max-height: 76vh;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .modal-info {
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .modal-meta {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--neon-purple);
+      font-weight: 700;
+    }
+
+    .modal-info h3 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #ffffff;
+    }
+
+    .modal-precio {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--neon-cyan);
+    }
+
+    .modal-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .modal-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--steel-silver);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .tallas-pills {
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px;
     }
 
-    .btn-filtro {
-      background: var(--bg-card);
-      color: var(--text-muted);
-      border: 1px solid rgba(0, 180, 216, 0.3);
-      padding: 7px 15px;
-      border-radius: 999px;
-      font-size: 0.83rem;
+    .talla-pill-btn {
+      background: var(--bg-input);
+      color: #ffffff;
+      border: 1px solid rgba(139, 44, 245, 0.4);
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
     }
 
-    .btn-filtro:hover,
-    .btn-filtro.activo {
+    .talla-pill-btn:hover,
+    .talla-pill-btn.seleccionada {
       background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-      color: #fff;
       border-color: transparent;
-      box-shadow: 0 0 14px rgba(147, 51, 234, 0.45);
+      box-shadow: 0 0 12px rgba(139, 44, 245, 0.45);
     }
 
-    .contenedor-principal {
-      max-width: 1180px;
-      margin: 0 auto 60px;
-      padding: 0 20px;
-    }
-
-    .bloque-colaboracion {
-      margin-bottom: 50px;
-    }
-
-    .colab-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 22px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(147, 51, 234, 0.28);
-    }
-
-    .colab-header h3 {
-      font-size: 1.35rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      background: linear-gradient(90deg, #ffffff, #00b4d8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .colab-badge {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 3px 10px;
-      border-radius: 999px;
-      background: rgba(181, 23, 158, 0.18);
-      color: #e879f9;
-      border: 1px solid rgba(181, 23, 158, 0.4);
-    }
-
-    .grid-productos {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 22px;
-    }
-
-    .card {
-      background: var(--bg-card);
-      border-radius: 14px;
-      border: 1px solid rgba(0, 180, 216, 0.25);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(147, 51, 234, 0.08);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-      position: relative;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #00b4d8;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 180, 216, 0.25);
-    }
-
-    .card-tag {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(6, 6, 12, 0.85);
-      backdrop-filter: blur(6px);
-      color: #00b4d8;
-      border: 1px solid rgba(0, 180, 216, 0.4);
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      z-index: 2;
-    }
-
-    .card-code {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(6, 6, 12, 0.85);
-      color: var(--text-muted);
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 4px 8px;
-      border-radius: 6px;
-      z-index: 2;
-    }
-
-    .card img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      background: #10101f;
-      border-bottom: 1px solid rgba(147, 51, 234, 0.2);
-    }
-
-    .card-body {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
-    }
-
-    .card-body h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .precio {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: #00b4d8;
-    }
-
-    select {
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid rgba(147, 51, 234, 0.4);
-      background: var(--bg-input);
-      color: var(--text-main);
-      width: 100%;
-      font-size: 0.88rem;
-      outline: none;
-    }
-
-    select:focus {
-      border-color: #00b4d8;
-    }
-
-    .btn-compra {
+    .btn-compra-modal {
       background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
       color: #fff;
       border: none;
-      padding: 11px;
-      border-radius: 8px;
+      padding: 14px;
+      border-radius: 6px;
       font-weight: 700;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
       cursor: pointer;
-      margin-top: auto;
-      box-shadow: 0 4px 14px rgba(147, 51, 234, 0.35);
+      margin-top: 10px;
+      box-shadow: 0 4px 16px rgba(139, 44, 245, 0.4);
       transition: filter 0.2s;
     }
 
-    .btn-compra:hover {
+    .btn-compra-modal:hover {
       filter: brightness(1.15);
     }
 
@@ -470,17 +981,45 @@
       text-align: center;
       padding: 35px 20px;
       color: var(--text-muted);
-      font-size: 0.85rem;
-      border-top: 1px solid rgba(147, 51, 234, 0.15);
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+      border-top: 1px solid rgba(139, 44, 245, 0.15);
       background: #040408;
+    }
+
+    @media (max-width: 1024px) {
+      .pc-carousel-track {
+        grid-auto-columns: calc(33.333% - 16px);
+      }
     }
 
     @media (max-width: 768px) {
       .nav-links {
         display: none;
       }
-      .hero h2 {
-        font-size: 1.9rem;
+      .pc-carousel-track {
+        grid-auto-columns: calc(55% - 12px);
+      }
+      .pc-arrow {
+        display: none;
+      }
+      .pc-quick-btn {
+        opacity: 1;
+        transform: translateY(0);
+        font-size: 0.68rem;
+        padding: 8px 6px;
+      }
+      .modal-contenido {
+        grid-template-columns: 1fr;
+        width: 95%;
+      }
+      .modal-img-box {
+        min-height: 300px;
+        border-right: none;
+        border-bottom: 1px solid rgba(139, 44, 245, 0.25);
+      }
+      .modal-img-box img {
+        max-height: 45vh;
       }
     }
   </style>
@@ -488,14 +1027,18 @@
 <body>
 
   <header>
-    <div class="header-logo">
-      <img src="img/logo.jpg" alt="SOMAFITX Logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=100&q=80'">
+    <div class="header-logo" onclick="volverPortadaEditorial()">
+      <img src="somafitx.jpeg" alt="SOMAFITX Logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=100&q=80'">
       <h1>SOMAFITX</h1>
     </div>
     <nav class="nav-links">
-      <a href="#">Inicio</a>
-      <a href="#catalogo">Catálogo Completo</a>
-      <a href="#colaboraciones">Colaboraciones</a>
+      <a onclick="volverPortadaEditorial()">Inicio</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn" onclick="abrirFiltroTipoPrenda('Todos')">Prendas &#9662;</button>
+        <div class="nav-dropdown-menu" id="header-menu-prendas"></div>
+      </div>
+      <a href="#seccion-categorias" onclick="volverPortadaEditorial()">Colecciones</a>
+      <a onclick="abrirColeccionCompleta('Todas', 'Todos')">Catálogo (316)</a>
     </nav>
     <div class="header-actions">
       <span class="badge-envio">Envíos a todo México</span>
@@ -505,45 +1048,64 @@
 
   <section class="hero">
     <div class="hero-content">
-      <img src="img/logo.jpg" alt="SOMAFITX Logo" class="hero-logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=200&q=80'">
+      <img src="somafitx.jpeg" alt="SOMAFITX Logo" class="hero-logo" onerror="this.src='https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=200&q=80'">
       <h2>SOMAFITX</h2>
-      <h3>Ropa Deportiva &amp; Colaboraciones Exclusivas</h3>
-      <p>Catálogo completo de 315 piezas exclusivas. Filtra por colección o busca tu número de prenda y pide directo por WhatsApp.</p>
-      <a href="#catalogo" class="btn-hero">Explorar 315 Prendas</a>
+      <h3>Suplementos • Ropa Deportiva &amp; Colaboraciones</h3>
       <div class="lema-bar">
         FUERZA <span>•</span> DISCIPLINA <span>•</span> RESULTADOS
       </div>
     </div>
   </section>
 
-  <h2 class="seccion-titulo" id="catalogo">Catálogo por Colección</h2>
+  <main class="contenedor-principal">
+    <!-- Menú rápido por Tipo de Prenda -->
+    <nav class="menu-tipos-prenda" id="barra-tipos-prenda" aria-label="Filtrar por tipo de prenda"></nav>
 
-  <div class="controles-catalogo">
-    <div class="buscador-box">
+    <!-- Buscador rápido -->
+    <div class="buscador-wrap">
       <input
         type="text"
         id="buscador"
-        placeholder="Buscar por colección, nombre o archivo (ej. prenda-173, Spider-Man)..."
-        oninput="actualizarVista()"
+        placeholder="Buscar pieza, colección, prenda o código (ej. Spider-Man, Hoodie, #173)..."
+        oninput="manejarBusqueda()"
       />
     </div>
-    <div class="filtros-bar" id="filtros-bar"></div>
-  </div>
 
-  <main class="contenedor-principal" id="colaboraciones"></main>
+    <!-- Zona dinámica: Portada Editorial tipo Pineda Covalin o Vista de Colección/Prenda -->
+    <div id="zona-dinamica"></div>
+  </main>
+
+  <!-- Modal Vista Rápida ("Elige Opciones" / Vista Ampliada) -->
+  <div class="modal-visor" id="modal-visor" onclick="cerrarModalFondo(event)">
+    <div class="modal-contenido">
+      <button class="modal-cerrar" onclick="cerrarModal()" title="Cerrar">✕</button>
+      <div class="modal-img-box">
+        <img id="modal-img" src="" alt="Vista ampliada">
+      </div>
+      <div class="modal-info">
+        <div class="modal-meta"><span id="modal-col">COLECCIÓN</span> &bull; <span id="modal-tipo">PRENDA</span> &bull; <span id="modal-code">#000</span></div>
+        <h3 id="modal-nombre">Nombre de la prenda</h3>
+        <p class="modal-precio" id="modal-precio">$1,599 MXN</p>
+        <p class="modal-desc">Edición especial disponible para envío a todo México. Selecciona tu talla para ordenar directamente por WhatsApp.</p>
+        <div>
+          <span class="modal-label">Talla disponible:</span>
+          <div class="tallas-pills" id="modal-tallas-pills"></div>
+        </div>
+        <button class="btn-compra-modal" id="modal-btn-comprar">
+          Pedir por WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
 
   <footer>
     &copy; 2026 SOMAFITX Store &mdash; Todos los derechos reservados.
   </footer>
 
   <script>
-    // 1. Cambia este número por tu WhatsApp (código de país + número sin espacios)
     const TELEFONO_WHATSAPP = "525500000000";
-
-    // 2. Ruta de la carpeta de imágenes
     const RUTA_IMG = "img/";
 
-    // 3. Catálogo completo unificado (Prenda 001 a Prenda 315)
     const PRODUCTOS_CATALOGO = [
       { id: 1, imagen: "prenda-001.jpg", nombre: "Civil Regime", coleccion: "Civil Regime", talla: "M", precio: 1599 },
       { id: 2, imagen: "prenda-002.jpg", nombre: "Civil Regime", coleccion: "Civil Regime", talla: "M", precio: 1599 },
@@ -862,6 +1424,7 @@
       { id: 314, imagen: "prenda-314.jpg", nombre: "Civil Regime", coleccion: "Civil Regime", talla: "M", precio: 1799 },
       { id: 315, imagen: "prenda-315.jpg", nombre: "Pants Civil Regime Blue Spiders", coleccion: "Civil Regime", talla: "M", precio: 1799 }
     ];
+
     const ORDEN_COLECCIONES = [
       "Marvel",
       "DC Comics",
@@ -873,6 +1436,102 @@
       "Civil Regime",
       "Otros"
     ];
+
+    const ORDEN_TIPOS_PRENDA = [
+      "Playeras",
+      "Sudaderas",
+      "Pants y Short",
+      "Gorras y Caletas",
+      "Chamarras",
+      "Box Sets"
+    ];
+
+    const PORTADAS_CATEGORIA = {
+      "Marvel": "prenda-030.jpg",
+      "DC Comics": "prenda-183.jpg",
+      "Terror": "prenda-010.jpg",
+      "Disney": "prenda-057.jpg",
+      "Anime": "prenda-041.jpg",
+      "Star Wars": "prenda-269.jpg",
+      "Caricaturas": "prenda-174.jpg",
+      "Civil Regime": "prenda-001.jpg",
+      "Otros": "prenda-290.jpg"
+    };
+
+    const PORTADAS_TIPO_PRENDA = {
+      "Playeras": "prenda-171.jpg",
+      "Sudaderas": "prenda-183.jpg",
+      "Pants y Short": "prenda-188.jpg",
+      "Gorras y Caletas": "prenda-089.jpg",
+      "Chamarras": "prenda-163.jpg",
+      "Box Sets": "prenda-181.jpg"
+    };
+
+    const CATEGORIA_OVERRIDES = {
+      1: "Sudaderas",
+      2: "Sudaderas",
+      6: "Sudaderas",
+      8: "Gorras y Caletas",
+      11: "Sudaderas",
+      15: "Sudaderas",
+      16: "Pants y Short",
+      21: "Sudaderas",
+      26: "Pants y Short",
+      35: "Pants y Short",
+      38: "Sudaderas",
+      40: "Sudaderas",
+      45: "Sudaderas",
+      55: "Sudaderas",
+      56: "Sudaderas",
+      63: "Pants y Short",
+      64: "Sudaderas",
+      68: "Pants y Short",
+      69: "Sudaderas",
+      71: "Sudaderas",
+      76: "Sudaderas",
+      92: "Sudaderas",
+      93: "Pants y Short",
+      94: "Sudaderas",
+      101: "Sudaderas",
+      104: "Gorras y Caletas",
+      108: "Sudaderas",
+      113: "Sudaderas",
+      115: "Chamarras",
+      123: "Pants y Short",
+      131: "Sudaderas",
+      140: "Pants y Short",
+      146: "Sudaderas",
+      155: "Sudaderas",
+      157: "Chamarras",
+      162: "Pants y Short",
+      164: "Sudaderas",
+      174: "Playeras",
+      198: "Playeras",
+      240: "Sudaderas",
+      260: "Sudaderas",
+      288: "Pants y Short",
+      300: "Sudaderas",
+      302: "Sudaderas",
+      303: "Pants y Short",
+      304: "Sudaderas",
+      305: "Pants y Short",
+      314: "Sudaderas"
+    };
+
+    // Clasificación automática precisa por tipo de prenda (con ajustes manuales)
+    function detectarTipoPrenda(item) {
+      const numId = Math.floor(Number(item.id));
+      if (CATEGORIA_OVERRIDES[numId]) {
+        return CATEGORIA_OVERRIDES[numId];
+      }
+      const n = item.nombre.toLowerCase();
+      if (n.includes("box set")) return "Box Sets";
+      if (n.includes("beanie") || n.includes("gorra") || n.includes("cap")) return "Gorras y Caletas";
+      if (n.includes("pants") || n.includes("jogger") || n.includes("shorts")) return "Pants y Short";
+      if (n.includes("jacket")) return "Chamarras";
+      if (n.includes("hoodie")) return "Sudaderas";
+      return "Playeras";
+    }
 
     function parsearTallas(tallaStr) {
       if (!tallaStr) return ["M"];
@@ -887,133 +1546,462 @@
     }
 
     function formatearPrecio(precioNum) {
-      return `$${Number(precioNum).toLocaleString("es-MX")} MXN`;
+      return `$${Number(precioNum).toLocaleString("es-MX")}.00 MXN`;
     }
 
-    // Construir arreglo unificado compatible con la interfaz
     const todasLasPrendas = PRODUCTOS_CATALOGO.map((item) => {
       const numeroStr = item.imagen.replace("prenda-", "").replace(".jpg", "");
       const codigoExtra = String(item.id).includes(".") ? `#${numeroStr}-B` : `#${numeroStr}`;
+      const tallasArr = parsearTallas(item.talla);
+      const tipoPrenda = detectarTipoPrenda(item);
       return {
         id: String(item.id),
         codigo: codigoExtra,
         archivo: item.imagen,
         coleccion: item.coleccion,
+        tipoPrenda: tipoPrenda,
         nombre: item.nombre,
         precio: formatearPrecio(item.precio),
-        tallas: parsearTallas(item.talla)
+        tallas: tallasArr,
+        tallasTexto: tallasArr.length > 1 ? `${tallasArr.length} tallas disponibles` : `Talla ${tallasArr[0]}`
       };
     });
 
+    // Estado de la página
+    let vistaActual = "portada"; // "portada" o "coleccion"
     let coleccionActiva = "Todas";
+    let tipoPrendaActivo = "Todos";
+    let tabDestacadosActiva = "Marvel";
+    let tabUniversoActiva = "Terror";
+    let tallaSeleccionadaModal = "";
 
-    const contenedor = document.getElementById("colaboraciones");
-    const filtrosBar = document.getElementById("filtros-bar");
+    const zonaDinamica = document.getElementById("zona-dinamica");
     const buscadorInput = document.getElementById("buscador");
 
-    function renderFiltros() {
-      const conteoPorColab = {};
+    // Construir menús de tipos de prenda (Header dropdown + Barra rápida)
+    function renderizarMenusPrendas() {
+      const conteoTipos = { Todos: todasLasPrendas.length };
       todasLasPrendas.forEach((p) => {
-        conteoPorColab[p.coleccion] = (conteoPorColab[p.coleccion] || 0) + 1;
+        conteoTipos[p.tipoPrenda] = (conteoTipos[p.tipoPrenda] || 0) + 1;
       });
 
-      let html = `<button class="btn-filtro ${coleccionActiva === "Todas" ? "activo" : ""}" onclick="seleccionarFiltro('Todas')">Todas (${todasLasPrendas.length})</button>`;
+      const headerMenu = document.getElementById("header-menu-prendas");
+      const barraTipos = document.getElementById("barra-tipos-prenda");
 
-      ORDEN_COLECCIONES.forEach((col) => {
-        if (conteoPorColab[col]) {
-          const activo = coleccionActiva === col ? "activo" : "";
-          html += `<button class="btn-filtro ${activo}" onclick="seleccionarFiltro('${col.replace(/'/g, "\'")}')">${col} (${conteoPorColab[col]})</button>`;
-        }
-      });
+      const opciones = ["Todos", ...ORDEN_TIPOS_PRENDA];
 
-      filtrosBar.innerHTML = html;
-    }
+      if (headerMenu) {
+        headerMenu.innerHTML = opciones
+          .map(
+            (tipo) => `
+              <a onclick="abrirFiltroTipoPrenda('${tipo}')">
+                ${tipo === "Todos" ? "Todo el catálogo" : tipo}
+                <span>(${conteoTipos[tipo] || 0})</span>
+              </a>
+            `
+          )
+          .join("");
+      }
 
-    function seleccionarFiltro(col) {
-      coleccionActiva = col;
-      renderFiltros();
-      actualizarVista();
-    }
-
-    function actualizarVista() {
-      const textoBusqueda = buscadorInput.value.trim().toLowerCase();
-      contenedor.innerHTML = "";
-
-      ORDEN_COLECCIONES.forEach((nombreCol) => {
-        if (coleccionActiva !== "Todas" && coleccionActiva !== nombreCol) return;
-
-        const filtradas = todasLasPrendas.filter((p) => {
-          if (p.coleccion !== nombreCol) return false;
-          if (!textoBusqueda) return true;
-          return (
-            p.nombre.toLowerCase().includes(textoBusqueda) ||
-            p.coleccion.toLowerCase().includes(textoBusqueda) ||
-            p.archivo.toLowerCase().includes(textoBusqueda) ||
-            p.codigo.toLowerCase().includes(textoBusqueda)
-          );
-        });
-
-        if (filtradas.length === 0) return;
-
-        const cardsHTML = filtradas
-          .map((prod) => {
-            const opcionesTalla = prod.tallas
-              .map((t) => `<option value="${t}">Talla ${t}</option>`)
-              .join("");
-
+      if (barraTipos) {
+        barraTipos.innerHTML = opciones
+          .map((tipo) => {
+            const esActivo = vistaActual === "coleccion" && tipoPrendaActivo === tipo;
+            const etiqueta = tipo === "Todos" ? "Todas las prendas" : tipo;
             return `
-              <article class="card">
-                <span class="card-tag">${prod.coleccion}</span>
-                <span class="card-code">${prod.codigo}</span>
-                <img 
-                  src="${RUTA_IMG}${prod.archivo}" 
-                  alt="${prod.nombre}"
-                  loading="lazy"
-                  onerror="this.src='https://placehold.co/600x700/0c0c16/00b4d8?text=${encodeURIComponent(prod.archivo)}'"
-                >
-                <div class="card-body">
-                  <h4>${prod.nombre}</h4>
-                  <p class="precio">${prod.precio}</p>
-                  <select id="talla-${prod.id}">${opcionesTalla}</select>
-                  <button class="btn-compra" onclick="comprar('${prod.id}')">
-                    🛒 Pedir por WhatsApp
-                  </button>
-                </div>
-              </article>
+              <button
+                type="button"
+                class="btn-tipo-prenda ${esActivo ? "activo" : ""}"
+                onclick="abrirFiltroTipoPrenda('${tipo}')"
+              >
+                ${etiqueta} <span class="count-tag">${conteoTipos[tipo] || 0}</span>
+              </button>
             `;
           })
           .join("");
-
-        contenedor.innerHTML += `
-          <section class="bloque-colaboracion">
-            <div class="colab-header">
-              <h3>${nombreCol}</h3>
-              <span class="colab-badge">${filtradas.length} ${filtradas.length === 1 ? "pieza" : "piezas"}</span>
-            </div>
-            <div class="grid-productos">
-              ${cardsHTML}
-            </div>
-          </section>
-        `;
-      });
-
-      if (contenedor.innerHTML === "") {
-        contenedor.innerHTML = `<p style="text-align:center; color: var(--text-muted); padding: 40px 0;">No se encontraron prendas con ese criterio de búsqueda.</p>`;
       }
     }
 
-    function comprar(id) {
-      const prod = todasLasPrendas.find((p) => p.id === String(id));
-      const talla = document.getElementById(`talla-${id}`).value;
-      const mensaje = encodeURIComponent(
-        `Hola SOMAFITX, me interesa la prenda ${prod.archivo} (${prod.nombre}) de la colección ${prod.coleccion} en talla ${talla} (${prod.precio}).`
-      );
-      window.open(`https://wa.me/${TELEFONO_WHATSAPP}?text=${mensaje}`, "_blank");
+    function volverPortadaEditorial() {
+      vistaActual = "portada";
+      coleccionActiva = "Todas";
+      tipoPrendaActivo = "Todos";
+      buscadorInput.value = "";
+      renderizar();
     }
 
-    // Inicializar
-    renderFiltros();
-    actualizarVista();
+    function abrirFiltroTipoPrenda(tipo) {
+      if (tipo === "Todos" && vistaActual === "portada") {
+        abrirColeccionCompleta("Todas", "Todos");
+        return;
+      }
+      vistaActual = "coleccion";
+      tipoPrendaActivo = tipo;
+      renderizar();
+      const target = document.getElementById("barra-tipos-prenda");
+      if (target) {
+        window.scrollTo({ top: target.offsetTop - 90, behavior: "smooth" });
+      }
+    }
+
+    function abrirColeccionCompleta(nombreColeccion, tipoPrenda = null) {
+      vistaActual = "coleccion";
+      coleccionActiva = nombreColeccion;
+      if (tipoPrenda !== null) {
+        tipoPrendaActivo = tipoPrenda;
+      }
+      renderizar();
+      const target = document.getElementById("barra-tipos-prenda");
+      if (target) {
+        window.scrollTo({ top: target.offsetTop - 90, behavior: "smooth" });
+      }
+    }
+
+    function cambiarSubfiltroPrenda(tipo) {
+      tipoPrendaActivo = tipo;
+      renderizar();
+    }
+
+    function cambiarTabDestacados(col) {
+      tabDestacadosActiva = col;
+      renderizar();
+    }
+
+    function cambiarTabUniverso(col) {
+      tabUniversoActiva = col;
+      renderizar();
+    }
+
+    function moverCarrusel(idTrack, direccion) {
+      const track = document.getElementById(idTrack);
+      if (!track) return;
+      const desplazamiento = track.clientWidth * 0.78 * direccion;
+      track.scrollBy({ left: desplazamiento, behavior: "smooth" });
+    }
+
+    function manejarBusqueda() {
+      const q = buscadorInput.value.trim();
+      if (q.length > 0) {
+        vistaActual = "coleccion";
+      } else if (coleccionActiva === "Todas" && tipoPrendaActivo === "Todos") {
+        vistaActual = "portada";
+      }
+      renderizar();
+    }
+
+    // Tarjeta limpia estilo Pineda Covalin
+    function crearTarjetaEditorialHTML(prod) {
+      return `
+        <article class="pc-product-card">
+          <div class="pc-img-stage" onclick="abrirModalPrenda('${prod.id}')">
+            <span class="pc-code-pill">${prod.codigo}</span>
+            <span class="pc-type-pill">${prod.tipoPrenda}</span>
+            <img
+              src="${RUTA_IMG}${prod.archivo}"
+              alt="${prod.nombre}"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/600x800/0b0b16/00a8ff?text=${encodeURIComponent(prod.archivo)}'"
+            >
+            <button class="pc-quick-btn" onclick="event.stopPropagation(); abrirModalPrenda('${prod.id}')">
+              Elige Opciones
+            </button>
+          </div>
+          <h4 class="pc-prod-title" onclick="abrirModalPrenda('${prod.id}')">${prod.nombre}</h4>
+          <div class="pc-prod-price">${prod.precio}</div>
+          <div class="pc-prod-sizes">${prod.tallasTexto}</div>
+        </article>
+      `;
+    }
+
+    function renderizar() {
+      renderizarMenusPrendas();
+      const textoBusqueda = buscadorInput.value.trim().toLowerCase();
+
+      // =========================================================================
+      // MODO 1: PORTADA EDITORIAL INSPIRADA EN PINEDA COVALIN
+      // =========================================================================
+      if (vistaActual === "portada" && textoBusqueda === "") {
+        // Bloque 1: Colecciones Destacadas
+        const tabsDestacados = ["Marvel", "Civil Regime", "Anime", "Disney"];
+        const itemsDestacados = todasLasPrendas.filter((p) => p.coleccion === tabDestacadosActiva).slice(0, 10);
+
+        const tabsDestacadosHTML = tabsDestacados
+          .map(
+            (col) =>
+              `<button class="pc-tab ${tabDestacadosActiva === col ? "activo" : ""}" onclick="cambiarTabDestacados('${col}')">${col}</button>`
+          )
+          .join("");
+
+        const carruselDestacadosHTML = itemsDestacados.map(crearTarjetaEditorialHTML).join("");
+
+        // Bloque 2: Segunda vitrina por temática
+        const tabsUniverso = ["Terror", "DC Comics", "Star Wars", "Caricaturas"];
+        const itemsUniverso = todasLasPrendas.filter((p) => p.coleccion === tabUniversoActiva).slice(0, 10);
+
+        const tabsUniversoHTML = tabsUniverso
+          .map(
+            (col) =>
+              `<button class="pc-tab ${tabUniversoActiva === col ? "activo" : ""}" onclick="cambiarTabUniverso('${col}')">${col}</button>`
+          )
+          .join("");
+
+        const carruselUniversoHTML = itemsUniverso.map(crearTarjetaEditorialHTML).join("");
+
+        // Bloque 3: Sección "COMPRA POR TIPO DE PRENDA"
+        const conteoTipos = {};
+        todasLasPrendas.forEach((p) => {
+          conteoTipos[p.tipoPrenda] = (conteoTipos[p.tipoPrenda] || 0) + 1;
+        });
+
+        const tiposPrendaCardsHTML = ORDEN_TIPOS_PRENDA.map((tipo) => {
+          const total = conteoTipos[tipo] || 0;
+          if (!total) return "";
+          const portada = PORTADAS_TIPO_PRENDA[tipo] || "prenda-001.jpg";
+          return `
+            <div class="pc-cat-card" onclick="abrirColeccionCompleta('Todas', '${tipo}')">
+              <img
+                src="${RUTA_IMG}${portada}"
+                alt="${tipo}"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/600x800/0b0b16/00a8ff?text=${encodeURIComponent(tipo)}'"
+              >
+              <div class="pc-cat-caption">
+                <h3>${tipo}</h3>
+                <span>Ver ${tipo} (${total})</span>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        // Bloque 4: Sección "COMPRA POR COLECCIÓN"
+        const conteo = {};
+        todasLasPrendas.forEach((p) => {
+          conteo[p.coleccion] = (conteo[p.coleccion] || 0) + 1;
+        });
+
+        const categoriasCardsHTML = ORDEN_COLECCIONES.map((col) => {
+          const total = conteo[col] || 0;
+          if (!total) return "";
+          const portada = PORTADAS_CATEGORIA[col] || "prenda-001.jpg";
+          return `
+            <div class="pc-cat-card" onclick="abrirColeccionCompleta('${col.replace(/'/g, "\'")}', 'Todos')">
+              <img
+                src="${RUTA_IMG}${portada}"
+                alt="${col}"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/600x800/0b0b16/00a8ff?text=${encodeURIComponent(col)}'"
+              >
+              <div class="pc-cat-caption">
+                <h3>${col}</h3>
+                <span>Ver Colección (${total})</span>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        zonaDinamica.innerHTML = `
+          <!-- VITRINA 1: DESTACADOS POR COLECCIÓN -->
+          <section class="pc-bloque">
+            <div class="pc-bloque-header">
+              <h2>Destacados</h2>
+            </div>
+            <div class="pc-tabs">${tabsDestacadosHTML}</div>
+            <div class="pc-carousel-wrap">
+              <button class="pc-arrow prev" onclick="moverCarrusel('track-destacados', -1)" title="Anterior">&#10094;</button>
+              <div class="pc-carousel-track" id="track-destacados">
+                ${carruselDestacadosHTML}
+              </div>
+              <button class="pc-arrow next" onclick="moverCarrusel('track-destacados', 1)" title="Siguiente">&#10095;</button>
+            </div>
+            <div class="pc-cta-center">
+              <button class="btn-editorial" onclick="abrirColeccionCompleta('${tabDestacadosActiva}', 'Todos')">
+                Ver Colección ${tabDestacadosActiva}
+              </button>
+            </div>
+          </section>
+
+          <!-- VITRINA 2: UNIVERSO ESPECIAL -->
+          <section class="pc-bloque">
+            <div class="pc-bloque-header">
+              <h2>Ediciones Especiales</h2>
+            </div>
+            <div class="pc-tabs">${tabsUniversoHTML}</div>
+            <div class="pc-carousel-wrap">
+              <button class="pc-arrow prev" onclick="moverCarrusel('track-universo', -1)" title="Anterior">&#10094;</button>
+              <div class="pc-carousel-track" id="track-universo">
+                ${carruselUniversoHTML}
+              </div>
+              <button class="pc-arrow next" onclick="moverCarrusel('track-universo', 1)" title="Siguiente">&#10095;</button>
+            </div>
+            <div class="pc-cta-center">
+              <button class="btn-editorial" onclick="abrirColeccionCompleta('${tabUniversoActiva}', 'Todos')">
+                Ver Todos
+              </button>
+            </div>
+          </section>
+
+          <!-- BLOQUE 3: COMPRA POR TIPO DE PRENDA -->
+          <section class="pc-bloque" id="seccion-prendas">
+            <div class="pc-bloque-header">
+              <h2>Compra por Tipo de Prenda</h2>
+            </div>
+            <div class="pc-cat-grid">
+              ${tiposPrendaCardsHTML}
+            </div>
+          </section>
+
+          <!-- BLOQUE 4: COMPRA POR COLECCIÓN -->
+          <section class="pc-bloque" id="seccion-categorias">
+            <div class="pc-bloque-header">
+              <h2>Compra por Colección</h2>
+            </div>
+            <div class="pc-cat-grid">
+              ${categoriasCardsHTML}
+            </div>
+          </section>
+        `;
+        return;
+      }
+
+      // =========================================================================
+      // MODO 2: VISTA DE COLECCIÓN / TIPO DE PRENDA / RESULTADOS DE BÚSQUEDA
+      // =========================================================================
+      const esTodasCol = coleccionActiva === "Todas";
+      const esTodosTipos = tipoPrendaActivo === "Todos";
+
+      const filtradas = todasLasPrendas.filter((p) => {
+        const matchCol = esTodasCol || p.coleccion === coleccionActiva;
+        const matchTipo = esTodosTipos || p.tipoPrenda === tipoPrendaActivo;
+        if (!matchCol || !matchTipo) return false;
+        if (!textoBusqueda) return true;
+        return (
+          p.nombre.toLowerCase().includes(textoBusqueda) ||
+          p.coleccion.toLowerCase().includes(textoBusqueda) ||
+          p.tipoPrenda.toLowerCase().includes(textoBusqueda) ||
+          p.archivo.toLowerCase().includes(textoBusqueda) ||
+          p.codigo.toLowerCase().includes(textoBusqueda)
+        );
+      });
+
+      // Título dinámico según filtro combinado
+      let tituloVista = "Catálogo Completo";
+      if (!esTodasCol && !esTodosTipos) {
+        tituloVista = `${tipoPrendaActivo} &bull; ${coleccionActiva}`;
+      } else if (!esTodasCol) {
+        tituloVista = coleccionActiva;
+      } else if (!esTodosTipos) {
+        tituloVista = tipoPrendaActivo;
+      }
+
+      const tabsNavegacionHTML = [`<button class="pc-tab ${esTodasCol ? "activo" : ""}" onclick="abrirColeccionCompleta('Todas')">Todas las colecciones</button>`]
+        .concat(
+          ORDEN_COLECCIONES.map(
+            (col) =>
+              `<button class="pc-tab ${coleccionActiva === col ? "activo" : ""}" onclick="abrirColeccionCompleta('${col.replace(/'/g, "\'")}')">${col}</button>`
+          )
+        )
+        .join("");
+
+      const subfiltrosPrendaHTML = ["Todos", ...ORDEN_TIPOS_PRENDA]
+        .map((tipo) => {
+          const countEnCol = todasLasPrendas.filter(
+            (p) => (esTodasCol || p.coleccion === coleccionActiva) && (tipo === "Todos" || p.tipoPrenda === tipo)
+          ).length;
+          return `
+            <button
+              class="pc-subpill ${tipoPrendaActivo === tipo ? "activo" : ""}"
+              onclick="cambiarSubfiltroPrenda('${tipo}')"
+            >
+              ${tipo === "Todos" ? "Todas las prendas" : tipo} (${countEnCol})
+            </button>
+          `;
+        })
+        .join("");
+
+      const gridProductosHTML = filtradas.length
+        ? `<div class="pc-full-grid">${filtradas.map(crearTarjetaEditorialHTML).join("")}</div>`
+        : `<p style="text-align:center; color: var(--text-muted); padding: 50px 0;">No se encontraron piezas con esa combinación de filtros.</p>`;
+
+      zonaDinamica.innerHTML = `
+        <div class="vista-coleccion-header">
+          <button class="btn-regresar" onclick="volverPortadaEditorial()">&#8592; Inicio</button>
+          <div class="vista-coleccion-titulo">
+            <h2>${tituloVista}</h2>
+            <p>${filtradas.length} ${filtradas.length === 1 ? "pieza disponible" : "piezas disponibles"}</p>
+          </div>
+          <div style="width: 90px;"></div>
+        </div>
+        <div class="pc-tabs">${tabsNavegacionHTML}</div>
+        <div class="pc-subfiltros-prenda">${subfiltrosPrendaHTML}</div>
+        ${gridProductosHTML}
+      `;
+    }
+
+    // =========================================================================
+    // MODAL DE VISTA RÁPIDA GRANDE
+    // =========================================================================
+    function abrirModalPrenda(id) {
+      const prod = todasLasPrendas.find((p) => p.id === String(id));
+      if (!prod) return;
+
+      const modalImg = document.getElementById("modal-img");
+      modalImg.src = `${RUTA_IMG}${prod.archivo}`;
+      modalImg.onerror = function() {
+        this.src = `https://placehold.co/800x1000/0b0b16/00a8ff?text=${encodeURIComponent(prod.archivo)}`;
+      };
+
+      document.getElementById("modal-col").textContent = prod.coleccion;
+      document.getElementById("modal-tipo").textContent = prod.tipoPrenda;
+      document.getElementById("modal-code").textContent = prod.codigo;
+      document.getElementById("modal-nombre").textContent = prod.nombre;
+      document.getElementById("modal-precio").textContent = prod.precio;
+
+      tallaSeleccionadaModal = prod.tallas[0];
+      renderizarPillsTallas(prod.tallas);
+
+      document.getElementById("modal-btn-comprar").onclick = function() {
+        const mensaje = encodeURIComponent(
+          `Hola SOMAFITX, me interesa la prenda ${prod.archivo} (${prod.nombre} - ${prod.tipoPrenda}) de la colección ${prod.coleccion} en talla ${tallaSeleccionadaModal} (${prod.precio}).`
+        );
+        window.open(`https://wa.me/${TELEFONO_WHATSAPP}?text=${mensaje}`, "_blank");
+      };
+
+      document.getElementById("modal-visor").classList.add("abierto");
+      document.body.style.overflow = "hidden";
+    }
+
+    function renderizarPillsTallas(tallas) {
+      const contenedorPills = document.getElementById("modal-tallas-pills");
+      contenedorPills.innerHTML = tallas
+        .map(
+          (t) =>
+            `<button type="button" class="talla-pill-btn ${t === tallaSeleccionadaModal ? "seleccionada" : ""}" onclick="seleccionarTallaModal('${t}', ${JSON.stringify(tallas).replace(/"/g, "&quot;")})">${t}</button>`
+        )
+        .join("");
+    }
+
+    function seleccionarTallaModal(talla, tallas) {
+      tallaSeleccionadaModal = talla;
+      renderizarPillsTallas(tallas);
+    }
+
+    function cerrarModal() {
+      document.getElementById("modal-visor").classList.remove("abierto");
+      document.body.style.overflow = "";
+    }
+
+    function cerrarModalFondo(event) {
+      if (event.target.id === "modal-visor") {
+        cerrarModal();
+      }
+    }
+
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") cerrarModal();
+    });
+
+    // Inicializar portada editorial
+    renderizar();
   </script>
 
 </body>
